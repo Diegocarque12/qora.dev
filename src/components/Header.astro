@@ -1,19 +1,34 @@
-<header class="flex justify-between items-center py-5 w-[1120px] mx-auto">
-    <h1 class="font-semibold text-3xl">202Labs</h1>
-    <nav class="flex justify-center gap-x-6">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/projects">Projects</a>
-        <a href="/contact">Contact us</a>
+---
+// src/components/Header.astro
+import { initMenu } from '../scripts/menu.js';
+---
+<header class="flex justify-between items-center py-5 px-4 sm:px-6 md:px-8 lg:w-[1120px] lg:mx-auto">
+    <h1 class="font-semibold text-2xl sm:text-3xl">202Labs</h1>
+    
+    <button id="menu-toggle" class="lg:hidden">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  
+    <nav id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center lg:relative lg:flex lg:flex-row lg:bg-transparent lg:inset-auto">
+      <button id="close-menu" class="absolute top-5 right-5 lg:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <a href="/" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">Home</a>
+      <a href="/about" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">About</a>
+      <a href="/projects" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">Projects</a>
+      <a href="/contact" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">Contact us</a>
     </nav>
-
-    <a href="#">Let's Talk</a>
-</header>
-
+  
+    <a href="#" class="hidden lg:inline-block">Let's Talk</a>
+  </header>
 <hr>
-<section class="hero bg-white text-black py-32 relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-black transform skew-x-12 origin-top-right overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-30"></div>
+
+<section class="hero bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-16 sm:py-24 md:py-32 relative overflow-hidden">
+    <div class="hero-background hidden lg:block">
         <div class="stars absolute inset-0"></div>
         <div class="shooting-star"></div>
         <div class="shooting-star"></div>
@@ -21,21 +36,45 @@
         <div class="shooting-star"></div>
     </div>
     <div class="container mx-auto px-4 relative z-10">
-        <h1 class="text-6xl font-bold mb-6 leading-tight">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
             Transforming Ideas into<br>
             <span class="relative inline-block">
-                <span class="relative text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 z-10">Powerful Software</span>
+                <span class="relative z-10">Powerful Software</span>
             </span>
         </h1>
-        <p class="text-2xl mb-10 max-w-2xl text-gray-800 drop-shadow-md">We craft innovative, scalable solutions that drive your business forward.</p>
-        <div class="flex space-x-6">
-            <a href="/projects" class="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition duration-300 transform hover:scale-105 shadow-lg">Explore Our Work</a>
-            <a href="/contact" class="bg-white text-black px-8 py-4 rounded-full font-bold text-lg border-2 border-black hover:bg-gray-100 transition duration-300 transform hover:scale-105 shadow-lg">Start Your Project</a>
+        <p class="text-lg sm:text-xl md:text-2xl mb-10 max-w-2xl">We craft innovative, scalable solutions that drive your business forward.</p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+            <a href="/projects" class="bg-white text-black px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105 shadow-lg text-center">Explore Our Work</a>
+            <a href="/contact" class="bg-transparent text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-black transition duration-300 transform hover:scale-105 shadow-lg text-center">Start Your Project</a>
         </div>
     </div>
 </section>
 
+<script>
+    console.log('Script in Header.astro is running');
+    import { initMenu } from '../scripts/menu.js';
+    
+    // Ejecuta initMenu inmediatamente si el DOM ya está listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+        initMenu();
+    }
+</script>
+
 <style>
+    .hero-background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: skew(-12deg);
+        transform-origin: top right;
+        overflow: hidden;
+    }
+
     .stars {
         background-image: 
             radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
@@ -53,35 +92,6 @@
         0% { opacity: 0.5; }
         50% { opacity: 1; }
         100% { opacity: 0.5; }
-    }
-
-    .shooting-star {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        height: 2px;
-        background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
-        border-radius: 999px;
-        filter: drop-shadow(0 0 6px #699bff);
-        animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
-    }
-
-    .shooting-star:nth-child(2) {
-        top: 0;
-        right: 0;
-        left: auto;
-        animation-delay: 1.5s;
-    }
-
-    @keyframes tail {
-        0% { width: 0; }
-        30% { width: 100px; }
-        100% { width: 0; }
-    }
-
-    @keyframes shooting {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(300px); }
     }
 
     .shooting-star {
@@ -126,4 +136,19 @@
         0% { transform: translateX(0); }
         100% { transform: translateX(300px); }
     }
+
+    @media (max-width: 640px) {
+        .hero {
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.125rem;
+        }
+    }
 </style>
+
