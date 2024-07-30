@@ -1,0 +1,195 @@
+---
+import NextJSIcon from "./icons/NextJS.astro";
+import TailwindIcon from "./icons/Tailwind.astro";
+import PostgresqlIcon from "./icons/Postgresql.astro";
+import NestIcon from "./icons/Nest.astro";
+import DenoIcon from "./icons/Deno.astro";
+import ExternalLinkIcon from "./icons/ExternalLink.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJSIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindIcon,
+  },
+  NEST: {
+    name: "Nest",
+    class: "bg-[#000] text-white",
+    icon: NestIcon,
+  },
+  POSTGRESQL: {
+    name: "PostgreSQL",
+    class: "bg-[#336791ff] text-white",
+    icon: PostgresqlIcon,
+  },
+  DENO: {
+    name: "Deno",
+    class: "bg-[#000] text-white",
+    icon: DenoIcon,
+  },
+};
+const PROJECTS = [
+  {
+    id: "c1",
+    index: "1",
+    title: "Dask - Dancer academy administrator",
+    description:
+      "It's a Web App for manage students data, montly payments, create future notifications, appoint private lessons and other.",
+    // link: "/projects/dask",
+    github: "https://github.com/pheralb/svgl",
+    image: "/projects/svgl.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.NEST, TAGS.POSTGRESQL],
+  },
+  {
+    id: "c2",
+    index: "2",
+    title: "Saint Store - Urban Fashion Ecommerce",
+    description:
+      "Is an ecommerce for Costa Rican Urban Fashion, built with Shopify and Next.JS",
+    // link: "#",
+    github: "https://github.com/pheralb/svgl",
+    image: "/projects/svgl.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.NEST],
+  },
+  {
+    id: "c3",
+    index: "3",
+    title: "CutTime - Scheduler for barber stores",
+    description:
+      "Created from scratch with Next.JS and Tailwind CSS. The idea is the customers can schedule the appoitment without help.",
+    github: "https://github.com/pheralb/svgl",
+    image: "/projects/svgl.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.NEST],
+  },
+  {
+    id: "c4",
+    index: "4",
+    title: "Learny - Learning Management System",
+    description:
+      "Created from scratch with Next.JS, Tailwind, PostgresSQL, Deno.",
+    link: "#",
+    github: "https://github.com/pheralb/svgl",
+    image: "/projects/svgl.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.POSTGRESQL, TAGS.DENO],
+  },
+];
+---
+
+<div class="w-full md:flex items-center justify-center mt-20">
+  <div
+    class="h-full xl:h-[30rem] flex flex-col xl:flex-row flex-nowrap justify-center gap-8"
+  >
+    {
+      PROJECTS.map(({ id, index, title, description, tags, link }) => (
+        <article>
+          <input type="radio" name="slide" id={id} checked={id === "c1"} />
+          <label
+            for={id}
+            class="card xl:w-[80px] bg-center xl:min-h-[450px] bg-cover cursor-pointer overflow-hidden flex items-end rounded-lg w-[80vw] m-auto h-16 xl:h-full transition-opacity ease-in-out delay-100"
+          >
+            <div class="flex flex-row items-end cursor-default row">
+              <div class="hidden xl:flex bg-[#223] text-white rounded-[50%] w-[50px] h-14 items-center justify-center m-4 px-6">
+                {index}
+              </div>
+              <div class="flex flex-col justify-center overflow-hidden h-auto w-[80vw] opacity-0 bg-black/90 p-4 pl-8 pr-12 rounded-t-lg xl:rounded-tl-lg relative description transition-opacity ease-in-out">
+                {link ? (
+                  <a
+                    class="absolute top-0 right-0 bg-[#f5a64b]/90 text-white pt-1 pb-2 pl-2 pr-1 rounded-bl-md transition hover:text-[#f5a64b] hover:bg-white hover:ease-in-out cursor-pointer"
+                    href={link}
+                  >
+                    <ExternalLinkIcon />
+                  </a>
+                ) : (
+                  ""
+                )}
+
+                <h3 class="text-2xl font-semibold text-[#f5a64b] mb-2">
+                  {title}
+                </h3>
+                <p class="text-sm text-gray-400 pt-2" />
+                <p class="text-lg mb-4 text-pretty text-gray-200">
+                  {description}
+                </p>
+                <ul class="flex gap-4 md:gap-2 flex-row mb-4 flex-wrap">
+                  {tags.map((tag) => (
+                    <li>
+                      <span
+                        class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
+                      >
+                        <tag.icon class="size-4" />
+                        {tag.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </label>
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .card {
+    transition: 0.6s cubic-bezier(0.28, -0.03, 0, 0.99);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8);
+  }
+
+  .card > .row {
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .card > .description {
+    transform: translateY(30px);
+    transition-delay: 0.3s;
+    transition: all 0.3s ease;
+  }
+
+  .description h4 {
+    text-transform: uppercase;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    width: 600px;
+  }
+
+  @media (width <= 1200px) {
+    input:checked + label {
+      width: 80vw;
+      min-height: 600px;
+      transition-delay: 0.3s;
+      transition: all 0.3s ease;
+    }
+  }
+
+  input:checked + label .description {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .card[for="c1"] {
+    background-image: url("/projects/mobile-dask-dashboard.png");
+  }
+  .card[for="c2"] {
+    background-image: url("/projects/saint.png");
+  }
+  .card[for="c3"] {
+    background-image: url("/projects/barber.png");
+  }
+  .card[for="c4"] {
+    background-image: url("/projects/lms.png");
+  }
+</style>

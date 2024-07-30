@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Projects from '../components/Projects.astro';
 
 const services = [
   { title: 'Web Development', description: 'Custom websites tailored to your needs' },
@@ -30,16 +31,7 @@ const projects = [
 
     <section class="projects py-10 sm:py-20">
       <h2 class="text-3xl sm:text-4xl font-semibold mb-8 text-center">Projects</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {projects.map((project) => (
-          <div class="relative overflow-hidden group">
-            <img src={project.image} alt={project.title} class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-white text-xl font-semibold">{project.title}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Projects />
     </section>
 	
 	<section class="contact py-10 sm:py-20">
