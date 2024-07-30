@@ -2,55 +2,32 @@
 import { Image } from 'astro:assets';
 
 const brands = [
-  { name: 'Brand 1', logo: '/public/brands/google.svg' },
-  { name: 'Brand 2', logo: '/public/brands/comair.svg' },
-  { name: 'Brand 3', logo: '/public/brands/microsoft.svg' },
+  { name: 'Brand 1', logo: '/brands/google.svg' },
+  { name: 'Brand 2', logo: '/brands/comair.svg' },
+  { name: 'Brand 3', logo: '/brands/microsoft.svg' },
+  { name: 'Brand 4', logo: '/brands/nexen.svg' },
   // Add more brands as needed
 ];
 ---
 
-<div class="brands-carousel">
-  <div class="carousel-container">
-    <div class="carousel-track">
-      {brands.map((brand) => (
-        <div class="carousel-item">
-          <Image src={brand.logo} alt={brand.name} width={150} height={100} />
-        </div>
-      ))}
+<section class='bg-background text-foreground pt-24'>
+  <h2 class='text-3xl font-extrabold mb-16 text-center'>More than 4k+ Trusted Partner</h2>
+
+  <div class="bg-gray-100 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        {brands.map((brand) => (
+          <div class="flex items-center justify-center w-32 h-20">
+            <Image 
+              src={brand.logo} 
+              alt={brand.name} 
+              width={150} 
+              height={100} 
+              class="max-w-full max-h-full object-contain"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
-</div>
-
-<style>
-  .brands-carousel {
-    overflow: hidden;
-    padding: 40px 0;
-    background-color: #f5f5f5;
-  }
-
-  .carousel-container {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .carousel-track {
-    display: flex;
-    animation: scroll 10s linear infinite;
-  }
-
-  .carousel-item {
-    flex: 0 0 auto;
-    margin: 0 20px;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-</style>
-
-
+</section>
