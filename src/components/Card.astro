@@ -9,22 +9,29 @@ interface Props {
 const { category, title, description, img } = Astro.props;
 ---
 
-<div class='relative'>
+<div class='relative overflow-hidden group'>
   <svg
     width='416'
     height='505'
     viewBox='0 0 416 505'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
+    class='transition-all duration-300'
   >
     <path d='M0.5 0.5H415.5V434.304L350.282 504.5H0.5V0.5Z' stroke='#E4E4E4'>
     </path>
   </svg>
-  <div class='absolute top-0 p-8 flex flex-col gap-4'>
+  <div
+    class='absolute top-0 p-8 flex flex-col gap-4 transition-all duration-300 ease-in-out group-hover:translate-y-[-10px]'
+  >
     <p class='mb-2 text-left'>• {category}</p>
     <h3 class='text-xl font-semibold mb-4 text-left'>{title}.</h3>
     <div class='flex items-start h-auto'>
-      <img src={img} alt='abstract-design' class='h-24 w-auto mb-8' />
+      <img
+        src={img}
+        alt='abstract-design'
+        class='h-24 w-auto mb-8 transition-all duration-300 ease-in-out group-hover:brightness-110'
+      />
     </div>
     <p class='text-pretty-sm text-left'>
       {description}
@@ -32,7 +39,7 @@ const { category, title, description, img } = Astro.props;
   </div>
   <div class='absolute bottom-0 right-0 p-0'>
     <button
-      class='w-16 h-16 bg-secondary text-secondary-foreground rounded-full border flex items-center justify-center bg-white hover:bg-black hover:text-white hover:rotate-[-45deg] transition-transform duration-300 ease-in-out'
+      class='w-16 h-16 bg-secondary text-secondary-foreground rounded-full border flex items-center justify-center bg-white hover:bg-black hover:text-white hover:rotate-[-45deg] transition-all duration-300'
     >
       <span class='sr-only'>Go to {title}</span>
 
@@ -47,6 +54,7 @@ const { category, title, description, img } = Astro.props;
         stroke-linecap='round'
         stroke-linejoin='round'
         aria-hidden='true'
+        class='transition-all duration-100 ease-in-out'
       >
         <line x1='3' y1='12' x2='21' y2='12'></line>
         <polyline points='15 6 21 12 15 18'></polyline>
