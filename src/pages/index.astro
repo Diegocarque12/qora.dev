@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Projects from '../components/Projects.astro';
+import Brands from '../components/Brands.astro';
+
 
 const services = [
   { title: 'Web Development', description: 'Custom websites tailored to your needs' },
@@ -56,8 +58,13 @@ const projects = [
 		  </div>
 		</form>
 	  </section>
+
 	  
-  </main>
+	</main>
+	<section class="brands">
+	  <h2 class="text-3xl sm:text-4xl font-semibold mb-8 text-center">More than 4k+ Trusted Partner</h2>
+	  <Brands />
+	</section>
 </Layout>
 
 <style>
