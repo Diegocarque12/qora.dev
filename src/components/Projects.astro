@@ -1,4 +1,32 @@
-<div class='bg-[#111111] text-foreground p-8 lg:pl-48 h-screen flex'>
+<div class='bg-[#111111] text-foreground p-8 lg:pl-48 h-screen flex relative'>
+  <div class='absolute bottom-0 left-0'>
+    <svg
+      width='500'
+      height='250'
+      viewBox='0 0 287 83'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        opacity='0.1'
+        d='M38.5641 1L2 29.2919H75.6292L34.0562 61.4593H106.183V82H287'
+        stroke='#E4E4E4'></path>
+    </svg>
+  </div>
+  <div class='absolute'>
+    <svg
+      width='266'
+      height='74'
+      viewBox='0 0 266 74'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        opacity='0.1'
+        d='M30.0098 1L1 45.5L18.9274 73H168.866L147.027 39.5H266'
+        stroke='white'></path>
+    </svg>
+  </div>
   <div class='flex flex-col items-start justify-center mb-4 gap-4 pl-32 pr-24'>
     <span class='text-muted text-sm font-medium text-white flex gap-2'>
       <svg width='40' height='20' xmlns='http://www.w3.org/2000/svg'>
@@ -101,9 +129,20 @@
   </div>
   <div class='mt-8 w-1/2 relative'>
     <button
-      class='bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full px-6 py-3 transition-transform transform hover:scale-105 text-white absolute top-0 right-20 flex items-center justify-center w-[150px] h-[150px] border border-current'
-      style='border-radius: 100%;'><span>View All</span></button
-    >
+      class='bg-secondary text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary rounded-full px-6 py-3 transition-all duration-1000 transform hover:scale-105 text-white absolute top-0 right-20 flex items-center justify-center w-[150px] h-[150px] border border-current flex-col'
+      style='border-radius: 100%;'
+      ><span>View All</span>
+      <svg
+        width='50'
+        height='10'
+        viewBox='0 0 50 10'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        class='transition-all duration-1000'
+      >
+        <path d='M0.231934 1L48.0951 1L36.0525 9' stroke='currentColor'></path>
+      </svg>
+    </button>
     <div
       class='bg-muted h-2/3 w-full rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white absolute right-0 bottom-0'
     >
