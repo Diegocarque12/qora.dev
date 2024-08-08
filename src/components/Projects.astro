@@ -198,32 +198,38 @@
 </div>
 
 <script>
-  const listItems = document.querySelectorAll("li[data-project]");
+  const listItems = document.querySelectorAll<HTMLElement>("li[data-project]");
   const images = document.querySelectorAll(".bg-muted img");
   const defaultImage = document.getElementById("default-image");
 
-  function showImage(projectType) {
+  function showImage(projectType: string) {
     images.forEach((img) => img.classList.add("hidden"));
     const targetImage = document.getElementById(`${projectType}-image`);
     if (targetImage) {
       targetImage.classList.remove("hidden");
-    } else {
+    } else if (defaultImage) {
       defaultImage.classList.remove("hidden");
     }
   }
 
   listItems.forEach((item) => {
     item.addEventListener("mouseenter", () => {
-      showImage(item.dataset.project);
+      if (item.dataset.project) {
+        showImage(item.dataset.project);
+      }
     });
 
     item.addEventListener("click", () => {
-      showImage(item.dataset.project);
+      if (item.dataset.project) {
+        showImage(item.dataset.project);
+      }
     });
   });
 
-  // Show default image when mouse leaves the list
-  document.querySelector("ul").addEventListener("mouseleave", () => {
-    showImage("default");
-  });
+  const ulElement = document.querySelector("ul");
+  if (ulElement) {
+    ulElement.addEventListener("mouseleave", () => {
+      showImage("default");
+    });
+  }
 </script>
