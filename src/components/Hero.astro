@@ -2,66 +2,94 @@
 import Button from "./Button.astro";
 ---
 
-<section class="hero bg-white h-full min-h-[45rem] mb-80 py-12 sm:py-16 md:py-20 lg:py-24 relative">
-    <div class="container mx-auto">
-        <h2 class="relative">
-            <span class="block text-xl">Creative <span class="text-9xl font-extrabold">Digital</span></span>
-            <span class="agency-text text-9xl font-extrabold ml-48">Agency</span>
-        </h2>
-        <p class="text-2xl text-pretty max-w-[45%] my-10 ">
-            At Onnat we specialize in transforming your digital visio
-            into reality. Our team of creative experts is dedicated
-            to crafting innovative digital solutions.
-        </p>
+<section
+  class='hero bg-white h-full min-h-[45rem] py-12 px-8 sm:py-16 md:py-20 lg:py-24 relative'
+  id='hero'
+>
+  <div class='container mx-auto flex flex-col items-center'>
+    <h2 class='relative text-center'>
+      <span class='block text-xl' data-aos='fade-down' data-aos-duration='800'
+        >Creative <span
+          class='text-8xl lg:text-9xl font-extrabold'
+          data-aos='zoom-in'
+          data-aos-duration='1200'
+          data-aos-delay='400'>Digital</span
+        ></span
+      >
+      <span
+        class='agency-text text-8xl lg:text-9xl font-extrabold ml-44'
+        data-aos='fade-left'
+        data-aos-duration='1000'
+        data-aos-delay='800'>Agency</span
+      >
+    </h2>
+    <p
+      class='text-xl text-pretty text-center max-w-3xl my-10'
+      data-aos='flip-up'
+      data-aos-delay='1200'
+      data-aos-duration='1000'
+    >
+      At Onnat we specialize in transforming your digital vision into reality.
+      Our team of creative experts is dedicated to crafting innovative digital
+      solutions.
+    </p>
 
-        <Button />
-
-        <div class="services flex flex-wrap gap-4 mt-28 max-w-[45%]">
-            <a
-                href='#'
-                class='flex items-center text-black hover:text-white px-6 py-3 rounded-full hover:bg-black transition-colors duration-300 border-gray-200 border-2'
-                >      
-                UI/UX Design
-            </a>
-            <a
-                href='#'
-                class='flex items-center text-black hover:text-white px-6 py-3 rounded-full hover:bg-black transition-colors duration-300 border-gray-200 border-2'
-                >      
-                Company Branding
-            </a>
-            <a
-                href='#'
-                class='flex items-center text-black hover:text-white px-6 py-3 rounded-full hover:bg-black transition-colors duration-300 border-gray-200 border-2'
-                >      
-                Development
-            </a>
-            <a
-                href='#'
-                class='flex items-center text-black hover:text-white px-6 py-3 rounded-full hover:bg-black transition-colors duration-300 border-gray-200 border-2'
-                >      
-                Development
-            </a>
-        </div>
+    <div data-aos='zoom-in' data-aos-delay='1400' data-aos-duration='800'>
+      <Button />
     </div>
-    <img class="hidden md:block absolute top-72 right-0 w-2/4 md:h-[40rem] object-cover pt-8" src="https://placehold.co/600x400" alt="Hero Image">
+    <div class='services flex flex-wrap justify-center gap-4 mt-12 lg:mt-28'>
+      <a
+        href='#'
+        class='flex items-center lg:text-black lg:hover:text-white px-6 py-3 rounded-full hover:bg-black transition-all ease-in-out duration-300 border-gray-200 border-2'
+        data-aos='fade-up'
+        data-aos-delay='600'
+        data-aos-duration='600'
+      >
+        UI/UX Design
+      </a>
+      <a
+        href='#'
+        class='flex items-center lg:text-black lg:hover:text-white px-6 py-3 rounded-full hover:bg-black transition-all ease-in-out duration-300 border-gray-200 border-2'
+        data-aos='fade-up'
+        data-aos-delay='600'
+        data-aos-duration='600'
+      >
+        Search Engine Optimization (SEO)
+      </a>
+      <a
+        href='#'
+        class='flex items-center lg:text-black lg:hover:text-white px-6 py-3 rounded-full hover:bg-black transition-all ease-in-out duration-300 border-gray-200 border-2'
+        data-aos='fade-up'
+        data-aos-delay='600'
+        data-aos-duration='600'
+      >
+        Development
+      </a>
+    </div>
+  </div>
 </section>
 
 <style>
-    .hero {
-        background-image: url('/hero/bg-hero.svg');
-        background-position: center 40%;
-        background-repeat: no-repeat;
-    }
-    .agency-text::before {
-        content: '';
-        background-image: url('/hero/arrow-hero.svg');
-        background-size: 10rem;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        height: 6.5rem;
-        width: 10rem;
-        position: absolute;
-        left: 0;
+  .hero {
+    background-image: url("/hero/bg-hero.svg");
+    background-position: center 12%;
+    background-repeat: no-repeat;
+  }
+  .agency-text::before {
+    content: "";
+    background-image: url("/hero/arrow-hero.svg");
+    background-size: 10rem;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 6.5rem;
+    width: 10rem;
+    position: absolute;
+    left: 0;
+  }
 
+  @media (max-width: 1200px) {
+    .agency-text::before {
+      height: 4.5rem;
     }
+  }
 </style>
