@@ -1,6 +1,5 @@
 // src/scripts/menu.js
 export function initMenu() {
-  console.log("initMenu function is running");
   const menuToggle = document.getElementById("menu-toggle");
   const closeMenu = document.getElementById("close-menu");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -11,26 +10,31 @@ export function initMenu() {
   }
 
   menuToggle.addEventListener("click", () => {
-    console.log("Menu toggle clicked");
     mobileMenu.classList.toggle("hidden");
+    mobileMenu.classList.toggle("flex");
+    mobileMenu.classList.toggle("flex-col");
   });
 
   closeMenu.addEventListener("click", () => {
-    console.log("Close menu clicked");
     mobileMenu.classList.add("hidden");
+    mobileMenu.classList.remove("flex", "flex-col");
   });
 
   mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.add("hidden");
+      mobileMenu.classList.remove("flex", "flex-col");
     });
   });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 1024) {
       mobileMenu.classList.remove("hidden");
+      mobileMenu.classList.remove("flex-col");
+      mobileMenu.classList.add("flex");
     } else {
       mobileMenu.classList.add("hidden");
+      mobileMenu.classList.remove("flex", "flex-col");
     }
   });
 }
