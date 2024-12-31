@@ -1,6 +1,6 @@
 ---
 // src/components/Header.astro
-import { initMenu } from "../scripts/menu.js";
+import { initMenu } from "@/scripts/menu.js";
 ---
 
 <header
@@ -80,7 +80,7 @@ import { initMenu } from "../scripts/menu.js";
 <div class='h-20'></div>
 
 <script>
-  import { initMenu } from "../scripts/menu.js";
+  import { initMenu } from "@/scripts/menu.js";
 
   // Ejecuta initMenu inmediatamente si el DOM ya está listo
   if (document.readyState === "loading") {
