@@ -1,43 +1,91 @@
 ---
 // src/components/Header.astro
-import { initMenu } from '../scripts/menu.js';
+import { initMenu } from "../scripts/menu.js";
 ---
-<header class="flex justify-between items-center py-5 container lg:mx-auto">
-    <h1 class="font-semibold text-2xl sm:text-3xl">Qora</h1>
-    
-    <button id="menu-toggle" class="lg:hidden">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+
+<header
+  class='fixed top-0 left-0 right-0 bg-white z-40 flex justify-between items-center py-4 px-6 md:px-8 shadow-sm'
+>
+  <h1 class='font-semibold text-2xl sm:text-3xl'>Qora.dev</h1>
+
+  <button
+    id='menu-toggle'
+    class='lg:hidden focus:outline-none hover:opacity-75 transition-opacity'
+  >
+    <svg
+      class='w-7 h-7'
+      fill='none'
+      stroke='currentColor'
+      viewBox='0 0 24 24'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        stroke-width='2'
+        d='M4 6h16M4 12h16m-7 6h7'></path>
+    </svg>
+  </button>
+  <nav
+    id='mobile-menu'
+    class='hidden lg:flex lg:relative lg:flex-row lg:bg-transparent lg:inset-auto lg:space-y-0 fixed inset-0 bg-white/95 backdrop-blur-sm z-50 items-center justify-center transition-all duration-300 ease-in-out'
+  >
+    <button
+      id='close-menu'
+      class='absolute top-6 right-6 lg:hidden focus:outline-none hover:opacity-75 transition-opacity'
+    >
+      <svg
+        class='w-7 h-7'
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M6 18L18 6M6 6l12 12'></path>
       </svg>
     </button>
-  
-    <nav id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center lg:relative lg:flex lg:flex-row lg:bg-transparent lg:inset-auto">
-      <button id="close-menu" class="absolute top-5 right-5 lg:hidden">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-      <a href="/" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">Home</a>
-      <a href="/about" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">About</a>
-      <a href="/projects" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">Projects</a>
-      <a href="/contact" class="text-2xl my-2 lg:text-base lg:my-0 lg:mx-3">Contact us</a>
-    </nav>
-  
-    <a href="#" class="hidden lg:inline-block">Let's Talk</a>
-  </header>
-<hr>
+
+    <a
+      href='/'
+      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
+      >Home</a
+    >
+    <a
+      href='/about'
+      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
+      >About</a
+    >
+    <a
+      href='/projects'
+      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
+      >Projects</a
+    >
+    <a
+      href='/contact'
+      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
+      >Contact us</a
+    >
+  </nav>
+
+  <a
+    href='#'
+    class='hidden lg:inline-block bg-black text-white px-5 py-2.5 hover:bg-gray-800 transition-colors rounded-md font-medium'
+    >Let's Talk</a
+  >
+</header>
+<div class='h-20'></div>
 
 <script>
-    console.log('Script in Header.astro is running');
-    import { initMenu } from '../scripts/menu.js';
-    
-    // Ejecuta initMenu inmediatamente si el DOM ya está listo
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initMenu);
-    } else {
-        initMenu();
-    }
+  import { initMenu } from "../scripts/menu.js";
+
+  // Ejecuta initMenu inmediatamente si el DOM ya está listo
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMenu);
+  } else {
+    initMenu();
+  }
 </script>
-
-
-
