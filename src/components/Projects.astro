@@ -1,6 +1,7 @@
 <div
-  class='bg-[#111111] text-foreground p-8 lg:pl-48 h-screen flex relative'
+  class='bg-[#111111] text-foreground p-8 lg:pl-48 h-screen flex relative scroll-mt-[4.75rem]'
   data-aos='fade-up'
+  id='projects'
 >
   <div class='absolute bottom-0 left-0'>
     <svg
@@ -228,19 +229,32 @@
     </div>
   </div>
 </div>
-
 <script>
   const listItems = document.querySelectorAll<HTMLElement>("li[data-project]");
   const images = document.querySelectorAll(".bg-muted img");
   const defaultImage = document.getElementById("default-image");
 
+  // Show first project by default
+  const firstProject = listItems[0];
+  if (firstProject?.dataset.project) {
+    showImage(firstProject.dataset.project);
+    firstProject.classList.add("text-white", "scale-110");
+  }
+
   function showImage(projectType: string) {
     images.forEach((img) => img.classList.add("hidden"));
+    listItems.forEach((item) => {
+      item.classList.remove("text-white", "scale-110");
+    });
+
     const targetImage = document.getElementById(`${projectType}-image`);
     if (targetImage) {
       targetImage.classList.remove("hidden");
-    } else if (defaultImage) {
-      defaultImage.classList.remove("hidden");
+
+      const activeItem = document.querySelector(
+        `li[data-project="${projectType}"]`
+      );
+      activeItem?.classList.add("text-white", "scale-110");
     }
   }
 
