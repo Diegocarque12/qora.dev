@@ -14,11 +14,31 @@ const { title } = Astro.props;
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content='Astro description' />
-    <meta name='viewport' content='width=device-width' />
+    <meta
+      name='description'
+      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
+    />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <title>{title}</title>
+    <meta
+      name='keywords'
+      content='web development, digital agency, web design, responsive websites, web applications, Qora, professional web services'
+    />
+    <meta name='author' content='Qora Digital Agency' />
+    <meta property='og:title' content={`${title} | Qora Digital Agency`} />
+    <meta
+      property='og:description'
+      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
+    />
+    <meta property='og:type' content='website' />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={`${title} | Qora Digital Agency`} />
+    <meta
+      name='twitter:description'
+      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
+    />
+    <title>{title} | Qora Digital Agency</title>
     <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css' />
   </head>
   <body>
@@ -36,15 +56,31 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
+    --max-width: 1200px;
+    --padding-x: 1rem;
   }
   html {
     scroll-behavior: smooth;
     /* scroll-padding-top: 4.75rem; */
     font-family: "Onest Variable", system-ui, sans-serif;
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
   }
   body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    :root {
+      --padding-x: 0.5rem;
+    }
   }
 </style>

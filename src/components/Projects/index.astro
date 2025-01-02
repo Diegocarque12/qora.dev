@@ -1,15 +1,16 @@
 <div
-  class='bg-[#111111] text-foreground p-8 lg:pl-48 h-screen flex relative scroll-mt-[4.75rem]'
+  class='bg-[#111111] text-foreground p-4 sm:p-6 lg:p-8 lg:pl-48 min-h-screen flex flex-col lg:flex-row relative scroll-mt-[4.75rem]'
   data-aos='fade-up'
   id='projects'
 >
-  <div class='absolute bottom-0 left-0'>
+  <div class='absolute bottom-0 left-0 hidden sm:block'>
     <svg
-      width='500'
+      width='100%'
       height='250'
       viewBox='0 0 287 83'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      class='max-w-[500px]'
     >
       <path
         opacity='0.1'
@@ -17,13 +18,14 @@
         stroke='#E4E4E4'></path>
     </svg>
   </div>
-  <div class='absolute'>
+  <div class='absolute hidden sm:block'>
     <svg
-      width='266'
+      width='100%'
       height='74'
       viewBox='0 0 266 74'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      class='max-w-[266px]'
     >
       <path
         opacity='0.1'
@@ -32,7 +34,7 @@
     </svg>
   </div>
   <div
-    class='flex flex-col items-start justify-center mb-4 gap-4 pl-0 lg:pl-32 pr-24'
+    class='flex flex-col items-start justify-center mb-4 gap-4 px-4 sm:px-6 lg:px-32 w-full lg:w-1/2'
   >
     <span
       class='hidden text-muted text-sm font-medium text-white lg:flex gap-2'
@@ -42,20 +44,19 @@
         ></line>
         <circle cx='35' cy='10' r='4' fill='' stroke='white'></circle>
       </svg>
-
       Portfolio</span
     >
-    <h1 class='text-4xl lg:text-5xl font-bold mb-4 text-white'>
+    <h1 class='text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white'>
       Showcasing Creative Excellence.
     </h1>
-    <p class='text-muted-foreground mb-8 text-gray-300 text-sm mr-16 lg:mr-28'>
+    <p class='text-muted-foreground mb-8 text-gray-300 text-sm lg:mr-28'>
       Crafting visually appealing and user websites tailored to your brand's and
       observe of objectives.
     </p>
     <ul class='space-y-2 mb-8 w-full flex flex-col gap-4'>
       <li
         data-project='branding'
-        class='text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
+        class='text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
       >
         Innovative Branding
         <svg
@@ -77,7 +78,7 @@
       </li>
       <li
         data-project='figma'
-        class='text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
+        class='text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
       >
         Figma Design
         <svg
@@ -99,7 +100,7 @@
       </li>
       <li
         data-project='content'
-        class='text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
+        class='text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
       >
         SEO And Content Marketing
         <svg
@@ -121,7 +122,7 @@
       </li>
       <li
         data-project='redesign'
-        class='text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
+        class='text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
       >
         Creative Website Redesign
         <svg
@@ -143,7 +144,7 @@
       </li>
       <li
         data-project='saas'
-        class='text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
+        class='text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer'
       >
         SaaS Development & Integration
         <svg
@@ -165,21 +166,23 @@
       </li>
     </ul>
   </div>
-  <div class='mt-8 w-1/2 relative'>
+  <div class='mt-8 w-full lg:w-1/2 relative min-h-[400px] sm:min-h-[500px]'>
     <a
       href='/all-services'
-      class='bg-secondary text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary rounded-full px-6 py-3 transition-all duration-300 transform hover:scale-105 text-white absolute top-0 right-20 flex items-center justify-center w-[150px] h-[150px] border border-current flex-col group'
+      class='bg-secondary text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary rounded-full px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300 transform hover:scale-105 text-white absolute top-0 right-4 sm:right-20 flex items-center justify-center w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] border border-current flex-col group'
       style='border-radius: 100%;'
-      ><span class='transition-colors duration-300 group-hover:text-black z-10'
+    >
+      <span
+        class='transition-colors duration-300 group-hover:text-black z-10 text-sm sm:text-base mb-8 sm:mb-0'
         >View All</span
       >
       <svg
-        width='50'
-        height='10'
+        width='40'
+        height='8'
         viewBox='0 0 50 10'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        class='transition-all duration-300 group-hover:text-black z-10'
+        class='transition-all duration-300 group-hover:text-black z-10 sm:w-[50px] sm:h-[10px]'
       >
         <path d='M0.231934 1L48.0951 1L36.0525 9' stroke='currentColor'></path>
       </svg>

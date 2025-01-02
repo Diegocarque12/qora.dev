@@ -3,28 +3,31 @@ import Button from "@/composables/buttons/Button.astro";
 ---
 
 <section
-  class='hero bg-white h-full min-h-[45rem] py-12 px-8 sm:py-16 md:py-20 lg:py-24 relative'
+  class='hero bg-white h-full min-h-[45rem] py-8 px-4 sm:py-12 md:py-16 lg:py-24 relative'
   id='hero'
 >
   <div class='container mx-auto flex flex-col items-center'>
     <h2 class='relative text-center'>
-      <span class='block text-xl' data-aos='fade-down' data-aos-duration='800'
+      <span
+        class='block text-lg sm:text-xl'
+        data-aos='fade-down'
+        data-aos-duration='800'
         >Creative <span
-          class='text-8xl lg:text-9xl font-extrabold'
+          class='text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold'
           data-aos='zoom-in'
           data-aos-duration='1200'
           data-aos-delay='400'>Digital</span
         ></span
       >
       <span
-        class='agency-text text-8xl lg:text-9xl font-extrabold ml-44'
+        class='agency-text text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold ml-8 sm:ml-16 md:ml-24 lg:ml-44'
         data-aos='fade-left'
         data-aos-duration='1000'
         data-aos-delay='800'>Agency</span
       >
     </h2>
     <p
-      class='text-xl text-pretty text-center max-w-3xl my-10'
+      class='text-base sm:text-lg lg:text-xl text-pretty text-center max-w-3xl my-6 sm:my-8 lg:my-10 px-4'
       data-aos='flip-up'
       data-aos-delay='1200'
       data-aos-duration='1000'
@@ -37,9 +40,11 @@ import Button from "@/composables/buttons/Button.astro";
     <div data-aos='zoom-in' data-aos-delay='1400' data-aos-duration='800'>
       <Button />
     </div>
-    <div class='services flex flex-wrap justify-center gap-4 mt-12 lg:mt-28'>
+    <div
+      class='services flex flex-wrap justify-center gap-3 sm:gap-4 mt-8 sm:mt-12 lg:mt-28'
+    >
       <div
-        class='flex items-center lg:text-black px-6 py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300'
+        class='flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base'
         data-aos='fade-up'
         data-aos-delay='600'
         data-aos-duration='600'
@@ -47,7 +52,7 @@ import Button from "@/composables/buttons/Button.astro";
         UI/UX Design
       </div>
       <div
-        class='flex items-center lg:text-black px-6 py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300'
+        class='flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base'
         data-aos='fade-up'
         data-aos-delay='600'
         data-aos-duration='600'
@@ -55,7 +60,7 @@ import Button from "@/composables/buttons/Button.astro";
         Search Engine Optimization (SEO)
       </div>
       <div
-        class='flex items-center lg:text-black px-6 py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300'
+        class='flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base'
         data-aos='fade-up'
         data-aos-delay='600'
         data-aos-duration='600'
@@ -71,6 +76,7 @@ import Button from "@/composables/buttons/Button.astro";
     background-image: url("/hero/bg-hero.svg");
     background-position: center 12%;
     background-repeat: no-repeat;
+    background-size: contain;
   }
   .agency-text::before {
     content: "";
@@ -78,15 +84,23 @@ import Button from "@/composables/buttons/Button.astro";
     background-size: 10rem;
     background-repeat: no-repeat;
     background-position: bottom;
-    height: 6.5rem;
-    width: 10rem;
+    height: 4rem;
+    width: 6rem;
     position: absolute;
     left: 0;
   }
 
-  @media (max-width: 1200px) {
+  @media (min-width: 640px) {
     .agency-text::before {
-      height: 4.5rem;
+      height: 5rem;
+      width: 8rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .agency-text::before {
+      height: 6.5rem;
+      width: 10rem;
     }
   }
 </style>

@@ -5,20 +5,27 @@ const currentYear = new Date().getFullYear();
 <section
   class='bg-gradient-to-b from-[#2d2d2d] to-black min-h-[30rem] h-full flex flex-col items-center justify-around text-white pt-12'
 >
-  <div class='flex flex-col items-center justify-center mt-18'>
-    <h3 class='mb-8 text-gray-400'>
+  <div class='flex flex-col items-center justify-center mt-18 px-4 text-center'>
+    <h3 class='mb-8 text-gray-400 text-base sm:text-lg md:text-xl'>
       Transform your ideas into powerful digital experiences with our expert
       development team.
     </h3>
-    <h2 class='text-7xl font-bold'>Let’s Work Together</h2>
+    <h2 class='text-4xl sm:text-5xl md:text-7xl font-bold'>
+      Let's Work Together
+    </h2>
   </div>
   <span class='labsLetters'>Qora</span>
 </section>
-<footer class='bg-black text-white flex items-center justify-center py-8 gap-4'>
-  <div>
-    <span>© 2023-{currentYear} All rights for Qora exclusive</span>
+
+<footer
+  class='bg-black text-white flex flex-col sm:flex-row items-center justify-center py-8 gap-4 px-4'
+>
+  <div class='text-center sm:text-left'>
+    <span class='text-sm sm:text-base'
+      >© 2023-{currentYear} All rights for Qora exclusive</span
+    >
   </div>
-  <!-- <div class='flex space-x-4'>
+  <!-- <div class='flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4'>
     <a
       href='#'
       class='flex items-center text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors duration-300 border-gray-800 border-2'
@@ -52,11 +59,13 @@ const currentYear = new Date().getFullYear();
       LinkedIn
     </a>
   </div> -->
-  <div class='text-sm text-gray-400 flex items-center justify-center'>
+  <div
+    class='text-xs sm:text-sm text-gray-400 flex flex-col sm:flex-row items-center justify-center'
+  >
     <a href='/terms' class='hover:text-white transition-colors duration-300'
       >Terms of Service</a
     >
-    <span class='mx-2'>|</span>
+    <span class='mx-2 hidden sm:inline'>|</span>
     <a href='/privacy' class='hover:text-white transition-colors duration-300'
       >Privacy Policy</a
     >
@@ -69,7 +78,7 @@ const currentYear = new Date().getFullYear();
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgba(255, 255, 255, 0.1);
     color: transparent;
-    font-size: 200px;
+    font-size: clamp(100px, 15vw, 200px);
     font-style: normal;
     font-weight: 800;
   }

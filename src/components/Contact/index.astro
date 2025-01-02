@@ -1,9 +1,17 @@
-<section class='pt-24 pb-16 mb-16' data-aos='fade-up' id='contact'>
-  <form class='bg-black/90 pl-60 pr-20 py-20 max-w-[55%] flex flex-col'>
-    <h2 class='text-white text-3xl font-extrabold mb-16 text-left'>
+<section
+  class='pt-24 pb-16 mb-16 md:pt-16 sm:pt-12'
+  data-aos='fade-up'
+  id='contact'
+>
+  <form
+    class='bg-black/90 px-4 sm:px-6 md:px-8 lg:pl-60 lg:pr-20 py-12 md:py-16 lg:py-20 w-full lg:max-w-[55%] flex flex-col'
+  >
+    <h2
+      class='text-white text-2xl md:text-3xl font-extrabold mb-8 md:mb-16 text-left'
+    >
       Contact Us
     </h2>
-    <div class='grid grid-cols-2 gap-8'>
+    <div class='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'>
       <div class='mb-6'>
         <label for='name' class='block text-sm font-medium text-white mb-2'
           >Name</label
@@ -72,7 +80,7 @@
     <div class='mt-6'>
       <button
         type='submit'
-        class='px-6 py-3 bg-black text-white font-medium hover:bg-white hover:text-black border border-black transition-colors duration-300 focus:outline-none'
+        class='w-full sm:w-auto px-6 py-3 bg-black text-white font-medium hover:bg-white hover:text-black border border-black transition-colors duration-300 focus:outline-none'
       >
         Submit Now
       </button>
@@ -86,5 +94,11 @@
     background-size: 50% 100%;
     background-position: right;
     background-repeat: no-repeat;
+  }
+
+  @media (max-width: 1024px) {
+    section {
+      background-image: none;
+    }
   }
 </style>

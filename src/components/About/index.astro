@@ -13,7 +13,7 @@
 
       About Us</span
     >
-    <h1 class='text-4xl font-extrabold w-[35rem]'>
+    <h1 class='text-4xl font-extrabold md:w-[35rem] w-full'>
       Provide The Best Easy Solution For Your IT Problem.
     </h1>
     <p class='text-sm text-muted-foreground mb-8 text-gray-600'>
@@ -24,26 +24,28 @@
       ensures that every project we undertake exceeds client expectations and
       drives meaningful business growth.
     </p>
-    <div class='flex relative'>
+    <div class='flex flex-col md:flex-row relative'>
       <img
         src='/about/main.png'
         alt='Example image'
-        class='h-[31.25rem] w-[25rem]'
+        class='h-auto w-full md:h-[31.25rem] md:w-[25rem] object-cover'
       />
-      <div class='flex flex-col w-full p-8 border-t border-l ml-8'>
-        <div class='bg-card p-6 pr-0 pb-0'>
+
+      <div
+        class='flex flex-col w-full p-4 md:p-8 border-t border-l md:ml-8 mt-4 md:mt-0'
+      >
+        <div class='bg-card p-4 md:p-6 md:pr-0 md:pb-0'>
           <span class='text-gray-400'>01.</span>
-          <h3 class='text-2xl font-semibold mb-2'>UI/UX Experts</h3>
+          <h3 class='text-xl md:text-2xl font-semibold mb-2'>UI/UX Experts</h3>
           <p class='text-muted-foreground text-sm text-gray-600'>
             Our UI/UX experts don't just follow trends; we set them. Through
             data-driven insights and creative solutions, we develop customized
             user experiences that resonate with your target audience.
           </p>
         </div>
-
-        <div class='bg-card p-6 pr-0'>
+        <div class='bg-card p-4 md:p-6 md:pr-0'>
           <span class='text-gray-400'>02.</span>
-          <h3 class='text-2xl font-semibold mb-2'>
+          <h3 class='text-xl md:text-2xl font-semibold mb-2'>
             SEO and Accessibility Experts
           </h3>
           <p class='text-muted-foreground text-sm text-gray-600'>

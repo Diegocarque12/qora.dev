@@ -22,12 +22,18 @@ const services = [
 ---
 
 <section
-  class='bg-background text-foreground pt-8 lg:pt-24 pb-16'
+  class='bg-background text-foreground py-4 sm:py-8 md:py-16 lg:py-24'
   data-aos='fade-up'
 >
   <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
-    <h2 class='text-3xl font-extrabold mb-16'>Our Best Services</h2>
-    <div class='flex flex-wrap gap-8 justify-center'>
+    <h2
+      class='text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 sm:mb-8 md:mb-16'
+    >
+      Our Best Services
+    </h2>
+    <div
+      class='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 justify-items-center'
+    >
       {
         services.map((service) => (
           <Card
@@ -42,12 +48,12 @@ const services = [
     </div>
     <a
       href='/all-services'
-      class='bg-black w-60 hover:bg-white hover:text-black text-white px-6 py-2 mt-24 flex items-center justify-center mx-auto transition-colors duration-300 ease-in-out hover:shadow-lg'
+      class='inline-flex items-center bg-black hover:bg-white hover:text-black text-white px-3 sm:px-4 md:px-6 py-2 mt-8 sm:mt-12 md:mt-16 lg:mt-24 mx-auto transition-colors duration-300 ease-in-out hover:shadow-lg text-xs sm:text-sm md:text-base'
     >
       All Services
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        class='h-5 w-5 ml-2'
+        class='h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 ml-2'
         viewBox='0 0 20 20'
         fill='none'
         stroke='currentColor'
