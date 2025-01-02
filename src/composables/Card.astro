@@ -4,9 +4,10 @@ interface Props {
   title: string;
   description: string;
   img: string;
+  link: string;
 }
 
-const { category, title, description, img } = Astro.props;
+const { category, title, description, img, link } = Astro.props;
 ---
 
 <div class='relative overflow-hidden group'>
@@ -38,11 +39,11 @@ const { category, title, description, img } = Astro.props;
     </p>
   </div>
   <div class='absolute bottom-0 right-0 p-0'>
-    <button
+    <a
+      href={link}
       class='w-16 h-16 bg-secondary text-secondary-foreground rounded-full border flex items-center justify-center bg-white hover:bg-black hover:text-white hover:rotate-[-45deg] transition-all duration-300'
     >
       <span class='sr-only'>Go to {title}</span>
-
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width='24'
@@ -59,7 +60,7 @@ const { category, title, description, img } = Astro.props;
         <line x1='3' y1='12' x2='21' y2='12'></line>
         <polyline points='15 6 21 12 15 18'></polyline>
       </svg>
-    </button>
+    </a>
   </div>
 </div>
 <style>

@@ -8,6 +8,7 @@ const services = [
     description:
       "Expert web development services delivering high-performance, SEO-optimized websites with responsive design and accessibility standards. We create stunning, user-friendly digital experiences that ensure your business stands out online while reaching the widest possible audience across all devices.",
     img: "/web-solutions.svg",
+    link: "/marketing-websites",
   },
   {
     category: "Web Applications",
@@ -15,6 +16,7 @@ const services = [
     description:
       "Specialized in building scalable web applications and SaaS solutions that drive business growth. From enterprise software to commercial platforms, we transform your ideas into powerful, market-ready applications with robust features, secure architecture, and seamless user experience.",
     img: "/digital-marketing.svg",
+    link: "/web-applications",
   },
 ];
 ---
@@ -33,12 +35,14 @@ const services = [
             title={service.title}
             description={service.description}
             img={service.img}
+            link={service.link}
           />
         ))
       }
     </div>
-    <button
-      class='bg-black hover:bg-white hover:text-black text-white px-6 py-2 mt-24 flex items-center justify-center mx-auto transition-colors duration-300 ease-in-out hover:shadow-lg'
+    <a
+      href='/all-services'
+      class='bg-black w-60 hover:bg-white hover:text-black text-white px-6 py-2 mt-24 flex items-center justify-center mx-auto transition-colors duration-300 ease-in-out hover:shadow-lg'
     >
       All Services
       <svg
@@ -52,6 +56,6 @@ const services = [
         <path d='M5 10h10' stroke-linecap='round' stroke-linejoin='round'
         ></path>
       </svg>
-    </button>
+    </a>
   </div>
 </section>

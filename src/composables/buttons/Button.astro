@@ -1,6 +1,16 @@
+---
+interface Props {
+  link?: string;
+  openTab?: boolean;
+}
+
+const { link = "#projects", openTab } = Astro.props;
+---
+
 <a
-  href='#projects'
+  href={link}
   class='inline-block bg-black text-white px-8 py-3 text-lg font-semibold transition-transform duration-300 ease-in-out hover:translate-y-[-5px] hover:shadow-lg'
+  target={openTab ? "_blank" : "_self"}
 >
   Discover More
   <svg

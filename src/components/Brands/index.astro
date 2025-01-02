@@ -2,10 +2,10 @@
 import { Image } from "astro:assets";
 
 const brands = [
-  { name: "Brand 1", logo: "/brands/google.svg" },
-  { name: "Brand 2", logo: "/brands/comair.svg" },
-  { name: "Brand 3", logo: "/brands/microsoft.svg" },
-  { name: "Brand 4", logo: "/brands/nexen.svg" },
+  { name: "Brand 1", logo: "/brands/agromig.png" },
+  { name: "Brand 2", logo: "/brands/indigo.png" },
+  { name: "Brand 3", logo: "/brands/primefit.png" },
+  { name: "Brand 4", logo: "/brands/saborcallejero.png" },
   // Add more brands as needed
 ];
 ---
@@ -20,7 +20,7 @@ const brands = [
       <div class='flex flex-wrap justify-center items-center gap-8 md:gap-12'>
         {
           brands.map((brand) => (
-            <div class='flex items-center justify-center w-32 h-20'>
+            <div class='flex items-center justify-center w-40 h-32'>
               <Image
                 src={brand.logo}
                 alt={brand.name}

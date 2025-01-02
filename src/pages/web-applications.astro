@@ -1,0 +1,199 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Button from "@/composables/buttons/Button.astro";
+---
+
+<Layout title='Web Applications | Qora Digital Agency'>
+  <main class='bg-white'>
+    <section class='container mx-auto px-8 py-16 md:py-24'>
+      <div class='max-w-4xl mx-auto text-center'>
+        <h1
+          class='text-4xl md:text-6xl font-bold mb-6'
+          data-aos='fade-up'
+          data-aos-duration='800'
+        >
+          Web Application Development
+        </h1>
+        <p
+          class='text-xl text-gray-600 mb-12'
+          data-aos='fade-up'
+          data-aos-delay='200'
+          data-aos-duration='800'
+        >
+          We build powerful, scalable web applications that transform your
+          business processes and enhance user experiences.
+        </p>
+      </div>
+
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='400'
+        >
+          <img
+            src='/web-development/responsive.png'
+            alt='SaaS Development'
+            class='w-full h-48 sm:h-56 md:h-48 lg:h-56 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-xl sm:text-2xl font-bold mb-3 sm:mb-4'>
+            Responsive Design
+          </h3>
+          <p class='text-sm sm:text-base text-gray-600'>
+            Your software will not only look amazing, but it will also work
+            perfectly on any device. We design intuitive experiences that keep
+            users connected and satisfied, optimizing every interaction for
+            success.
+          </p>
+        </article>
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='600'
+        >
+          <img
+            src='/web-development/security.png'
+            alt='Analytics Integration'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>Security and Scalability</h3>
+          <p class='text-gray-600'>
+            We protect your application with advanced security standards and
+            build an architecture ready to grow with your business. Whether you
+            handle thousands or millions of users, you'll have reliable and
+            efficient software.
+          </p>
+        </article>
+
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='800'
+        >
+          <img
+            src='/web-development/supabase.jpg'
+            alt='Payment Integration'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+
+          <h3 class='text-2xl font-bold mb-4'>
+            Custom Integrations & Features
+          </h3>
+          <p class='text-gray-600'>
+            We connect your software with the tools you need: payment systems,
+            CRMs, advanced APIs, and more. We create unique solutions that solve
+            your specific problems and differentiate you from the competition.
+          </p>
+        </article>
+      </div>
+
+      <section class='mt-24'>
+        <h2
+          class='text-3xl md:text-5xl font-bold text-center mb-16'
+          data-aos='fade-up'
+        >
+          Featured Projects
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-12'>
+          <div
+            class='project-card bg-white rounded-xl p-6 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 border border-gray-100'
+            data-aos='fade-right'
+            data-aos-delay='200'
+          >
+            <div class='overflow-hidden rounded-xl mb-6 group'>
+              <a
+                href='https://app.primefit.coach'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img
+                  src='/web-development/projects/saas.png'
+                  alt='SaaS Platform'
+                  class='w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500'
+                />
+              </a>
+            </div>
+            <h3 class='text-2xl font-bold mb-4'>Enterprise SaaS Platform</h3>
+            <p
+              class='text-gray-600 mb-6 leading-relaxed group-hover:text-gray-900 transition-colors duration-300'
+            >
+              Scalable B2B solution handling 1k+ daily users with real-time
+              analytics and reporting.
+            </p>
+            <Button link='https://app.primefit.coach' openTab={true} />
+          </div>
+
+          <div
+            class='project-card bg-white rounded-xl p-6 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 border border-gray-100'
+            data-aos='fade-up'
+            data-aos-delay='400'
+          >
+            <div class='overflow-hidden rounded-xl mb-6 group'>
+              <a
+                href='https://lumma-nine.vercel.app/dashboard'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img
+                  src='/web-development/projects/dashboard.png'
+                  alt='Analytics Dashboard'
+                  class='w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500'
+                />
+              </a>
+            </div>
+            <h3 class='text-2xl font-bold mb-4'>Analytics Dashboard</h3>
+            <p
+              class='text-gray-600 mb-6 leading-relaxed group-hover:text-gray-900 transition-colors duration-300'
+            >
+              Custom analytics platform with interactive visualizations and
+              predictive insights.
+            </p>
+            <Button
+              link='https://lumma-nine.vercel.app/dashboard'
+              openTab={true}
+            />
+          </div>
+        </div>
+      </section>
+      <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
+        <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
+          Development Process
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='200'>
+            <div class='text-2xl font-bold mb-4'>01. Planning</div>
+            <p class='text-gray-600'>
+              Detailed requirements analysis and robust system architecture
+              design. We work closely with stakeholders to understand business
+              goals and technical constraints.
+            </p>
+          </div>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='400'>
+            <div class='text-2xl font-bold mb-4'>02. Development</div>
+            <p class='text-gray-600'>
+              Modern agile development with automated CI/CD pipelines and code
+              quality checks. Our team follows best practices and uses
+              cutting-edge technologies to deliver scalable solutions.
+            </p>
+          </div>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='600'>
+            <div class='text-2xl font-bold mb-4'>03. Testing</div>
+            <p class='text-gray-600'>
+              Rigorous quality assurance including penetration testing and
+              performance benchmarking. We ensure security, reliability, and
+              optimal performance across all devices and platforms.
+            </p>
+          </div>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='800'>
+            <div class='text-2xl font-bold mb-4'>04. Deployment</div>
+            <p class='text-gray-600'>
+              Production deployment with 24/7 monitoring and proactive
+              maintenance. We provide continuous support, updates, and
+              optimization to ensure your application runs smoothly.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+</Layout>

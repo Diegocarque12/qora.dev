@@ -1,0 +1,213 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Button from "@/composables/buttons/Button.astro";
+---
+
+<Layout title='All Services | Qora Digital Agency'>
+  <main class='bg-white'>
+    <section class='container mx-auto px-8 py-16 md:py-24'>
+      <div class='max-w-4xl mx-auto text-center'>
+        <h1
+          class='text-4xl md:text-6xl font-bold mb-6'
+          data-aos='fade-up'
+          data-aos-duration='800'
+        >
+          Digital Solutions & Services
+        </h1>
+        <p
+          class='text-xl text-gray-600 mb-12'
+          data-aos='fade-up'
+          data-aos-delay='200'
+          data-aos-duration='800'
+        >
+          Comprehensive digital services to transform your business and create
+          exceptional user experiences.
+        </p>
+      </div>
+
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='200'
+        >
+          <img
+            src='/all-services/web-design.png'
+            alt='Web Design'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>Web Design</h3>
+          <p class='text-gray-600'>
+            User-centered design that combines aesthetics with functionality to
+            create engaging digital experiences.
+          </p>
+        </article>
+
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='400'
+        >
+          <img
+            src='/all-services/web-development.png'
+            alt='Web Development'
+            class='w-full h-48 object-contain rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>Web Development</h3>
+          <p class='text-gray-600'>
+            Custom web solutions built with modern technologies and best
+            practices for optimal performance.
+          </p>
+        </article>
+
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='600'
+        >
+          <img
+            src='/all-services/saas.png'
+            alt='SaaS Development'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>SaaS Development</h3>
+          <p class='text-gray-600'>
+            Scalable SaaS solutions with robust architecture and secure user
+            management systems.
+          </p>
+        </article>
+      </div>
+
+      <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
+        <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
+          Our Expertise
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div
+            class='p-6 bg-white rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay='200'
+          >
+            <h3 class='text-2xl font-bold mb-4'>UI/UX Design</h3>
+            <p class='text-gray-600'>
+              Creating intuitive interfaces and seamless user experiences that
+              delight and engage
+            </p>
+          </div>
+          <div
+            class='p-6 bg-white rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay='400'
+          >
+            <h3 class='text-2xl font-bold mb-4'>Accessibility</h3>
+            <p class='text-gray-600'>
+              WCAG compliant solutions ensuring digital inclusion for all users
+            </p>
+          </div>
+          <div
+            class='p-6 bg-white rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay='600'
+          >
+            <h3 class='text-2xl font-bold mb-4'>Performance</h3>
+            <p class='text-gray-600'>
+              Optimized solutions for maximum speed and efficiency
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class='mt-24'>
+        <h2
+          class='text-3xl md:text-5xl font-bold text-center mb-16'
+          data-aos='fade-up'
+        >
+          Featured Projects
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div class='project-card' data-aos='fade-up' data-aos-delay='200'>
+            <img
+              src='/all-services/projects/indigo.png'
+              alt='Landing Page Design'
+              class='w-full h-64 object-cover rounded-xl mb-6'
+            />
+            <h3 class='text-2xl font-bold mb-4'>
+              Complete Landing Page Design
+            </h3>
+            <p class='text-gray-600 mb-4'>200% increase in user engagement</p>
+            <Button link='https://www.indigoexportco.com/' openTab={true} />
+          </div>
+
+          <div class='project-card' data-aos='fade-up' data-aos-delay='400'>
+            <img
+              src='/all-services/projects/agromig.png'
+              alt='Landing Page Branding'
+              class='w-full h-64 object-cover rounded-xl mb-6'
+            />
+            <h3 class='text-2xl font-bold mb-4'>Rebranding and landing page</h3>
+            <p class='text-gray-600 mb-4'>150% increase in conversion rate</p>
+            <Button link='https://haciendaagromig.com' openTab={true} />
+          </div>
+
+          <div class='project-card' data-aos='fade-up' data-aos-delay='600'>
+            <img
+              src='/all-services/projects/primefit.png'
+              alt='SaaS Platform'
+              class='w-full h-64 object-cover rounded-xl mb-6'
+            />
+            <h3 class='text-2xl font-bold mb-4'>SaaS Solution</h3>
+            <p class='text-gray-600 mb-4'>
+              150% growth in monthly subscriptions
+            </p>
+            <Button link='https://www.primefit.coach' openTab={true} />
+          </div>
+        </div>
+      </section>
+
+      <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
+        <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
+          Client Success Stories
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div
+            class='bg-white p-8 rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay='200'
+          >
+            <p class='text-gray-600 mb-6'>
+              "The landing page significantly improved our online presence and
+              increased customer engagement by 80%"
+            </p>
+
+            <div class='font-bold'>Miledy Molla</div>
+            <div class='text-gray-500'>Indigo Export Co</div>
+          </div>
+          <div
+            class='bg-white p-8 rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay='400'
+          >
+            <p class='text-gray-600 mb-6'>
+              "Our new landing page doubled our lead generation and improved our
+              brand visibility substantially"
+            </p>
+            <div class='font-bold'>Greivin Carvajal</div>
+            <div class='text-gray-500'>Hacienda Agromig</div>
+          </div>
+          <div
+            class='bg-white p-8 rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay='600'
+          >
+            <p class='text-gray-600 mb-6'>
+              "The training SaaS platform has transformed our performance
+              metrics and reduced control time investment by 65%"
+            </p>
+            <div class='font-bold'>Christian Ulloa</div>
+            <div class='text-gray-500'>Cumba's Gym</div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+</Layout>

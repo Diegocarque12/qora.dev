@@ -1,0 +1,197 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Button from "@/composables/buttons/Button.astro";
+---
+
+<Layout title='Marketing Websites | Qora Digital Agency'>
+  <main class='bg-white'>
+    <section class='container mx-auto px-8 py-16 md:py-24'>
+      <div class='max-w-4xl mx-auto text-center'>
+        <h1
+          class='text-4xl md:text-6xl font-bold mb-6'
+          data-aos='fade-up'
+          data-aos-duration='800'
+        >
+          Marketing Website Solutions
+        </h1>
+        <p
+          class='text-xl text-gray-600 mb-12'
+          data-aos='fade-up'
+          data-aos-delay='200'
+          data-aos-duration='800'
+        >
+          We craft high-converting marketing websites that tell your brand story
+          and drive business growth.
+        </p>
+      </div>
+
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='400'
+        >
+          <img
+            src='/marketing-webs/figma-design.png'
+            alt='Figma Design'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>Figma Design</h3>
+          <p class='text-gray-600'>
+            Professional and modern UI/UX designs created in Figma, ensuring
+            pixel-perfect and user-friendly interfaces for your website.
+          </p>
+        </article>
+
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='600'
+        >
+          <img
+            src='/marketing-webs/performance.png'
+            alt='SEO Optimization'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>SEO & Performance</h3>
+          <p class='text-gray-600'>
+            Comprehensive optimization including SEO best practices and
+            lightning-fast loading speeds to boost your website's visibility and
+            user experience.
+          </p>
+        </article>
+
+        <article
+          class='bg-gray-50 rounded-2xl p-8'
+          data-aos='fade-up'
+          data-aos-delay='800'
+        >
+          <img
+            src='/marketing-webs/copywriting.png'
+            alt='Content Management'
+            class='w-full h-48 object-cover rounded-lg mb-6'
+          />
+          <h3 class='text-2xl font-bold mb-4'>Copywriting & Content</h3>
+          <p class='text-gray-600'>
+            Professional copywriting services that deliver compelling content to
+            effectively communicate your brand message and drive conversions.
+          </p>
+        </article>
+      </div>
+
+      <section class='mt-24'>
+        <h2
+          class='text-3xl md:text-5xl font-bold text-center mb-16'
+          data-aos='fade-up'
+        >
+          Our Recent Projects
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-12'>
+          <div
+            class='project-card bg-white rounded-xl p-6 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 border border-gray-100'
+            data-aos='fade-right'
+            data-aos-delay='200'
+          >
+            <div class='overflow-hidden rounded-xl mb-6 group'>
+              <a
+                href='https://www.indigoexportco.com'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img
+                  src='/marketing-webs/projects/indigo.png'
+                  alt='Landing Page Redesign'
+                  class='w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500'
+                />
+              </a>
+            </div>
+            <h3 class='text-2xl font-bold mb-4'>Landing Page Transformation</h3>
+            <p
+              class='text-gray-600 mb-6 leading-relaxed group-hover:text-gray-900 transition-colors duration-300'
+            >
+              Strategic redesign and compelling copywriting for Indigo Export
+              Co, enhancing brand messaging and conversion optimization.
+            </p>
+            <a
+              href='https://www.indigoexportco.com'
+              target='_blank'
+              rel='noopener noreferrer'
+              class='inline-block hover:translate-x-1 transition-transform duration-300'
+            >
+              <Button link='https://www.indigoexportco.com' openTab={true} />
+            </a>
+          </div>
+
+          <div
+            class='project-card bg-white rounded-xl p-6 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 border border-gray-100'
+            data-aos='fade-up'
+            data-aos-delay='400'
+          >
+            <div class='overflow-hidden rounded-xl mb-6 group'>
+              <a
+                href='https://primefit.coach'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img
+                  src='/marketing-webs/projects/primefit.png'
+                  alt='PrimeFit Management Platform'
+                  class='w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500'
+                />
+              </a>
+            </div>
+            <h3 class='text-2xl font-bold mb-4'>Fitness Management Platform</h3>
+            <p
+              class='text-gray-600 mb-6 leading-relaxed group-hover:text-gray-900 transition-colors duration-300'
+            >
+              Modern SaaS platform for fitness trainers to manage their training
+              programs and track earnings efficiently.
+            </p>
+            <Button link='https://primefit.coach' openTab={true} />
+          </div>
+        </div>
+      </section>
+
+      <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
+        <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
+          Our Process
+        </h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='200'>
+            <div class='text-2xl font-bold mb-4'>01. Discovery</div>
+            <p class='text-gray-600'>
+              We begin by understanding your business goals, target audience,
+              and specific requirements. Through in-depth consultations, we
+              analyze your market position and identify opportunities for
+              growth.
+            </p>
+          </div>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='400'>
+            <div class='text-2xl font-bold mb-4'>02. Design</div>
+            <p class='text-gray-600'>
+              Our design team crafts visually stunning, user-friendly interfaces
+              that reflect your brand identity. We focus on creating engaging
+              experiences that drive conversions and delight your users.
+            </p>
+          </div>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='600'>
+            <div class='text-2xl font-bold mb-4'>03. Development</div>
+            <p class='text-gray-600'>
+              Using cutting-edge technologies and best practices, we build
+              responsive, fast-loading websites that are optimized for search
+              engines and scalable for future growth.
+            </p>
+          </div>
+          <div class='text-center' data-aos='fade-up' data-aos-delay='800'>
+            <div class='text-2xl font-bold mb-4'>04. Launch</div>
+            <p class='text-gray-600'>
+              Before deployment, we conduct comprehensive testing across devices
+              and browsers, optimize performance, and ensure security measures
+              are in place for a successful launch.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+</Layout>

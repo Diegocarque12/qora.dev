@@ -8,5 +8,6 @@
       "@/layouts/*": ["src/layouts/*"],
       "@/scripts/*": ["src/scripts/*"]
     }
-  }
+  },
+  "include": ["src/**/*"]
 }

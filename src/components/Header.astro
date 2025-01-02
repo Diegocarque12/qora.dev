@@ -6,7 +6,7 @@ import { initMenu } from "@/scripts/menu.js";
 <header
   class='fixed top-0 left-0 right-0 bg-white z-40 flex justify-between items-center py-4 px-6 md:px-8 shadow-sm'
 >
-  <h1 class='font-semibold text-2xl sm:text-3xl'>Qora.dev</h1>
+  <h1 class='font-semibold text-2xl sm:text-3xl'><a href="/">Qora.dev</a></h1>
 
   <button
     id='menu-toggle'
@@ -49,30 +49,20 @@ import { initMenu } from "@/scripts/menu.js";
       </svg>
     </button>
 
-    <a
-      href='#hero'
-      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
-      >Home</a
-    >
-    <a
-      href='#projects'
-      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
-      >Projects</a
-    >
-    <a
-      href='#about'
-      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
-      >About</a
-    >
-    <a
-      href='#contact'
-      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'
-      >Contact us</a
-    >
+    {Astro.url.pathname === '/' ? (
+      <a href='#hero' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Home</a>
+      <a href='#projects' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Projects</a>
+      <a href='#about' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>About</a>
+      <a href='#contact' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Contact us</a>
+    ) : (
+      <a href='/' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Home</a>
+      <a href='/#projects' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Projects</a>
+      <a href='/#about' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>About</a>
+      <a href='/#contact' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Contact us</a>
+    )}
   </nav>
 
-  <a
-    href='#'
+  <a href='#'
     class='hidden lg:inline-block bg-black text-white px-5 py-2.5 hover:bg-gray-800 transition-colors rounded-md font-medium'
     >Let's Talk</a
   >

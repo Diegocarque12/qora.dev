@@ -1,6 +1,6 @@
 <section class='pt-24 pb-16 mb-16' data-aos='fade-up' id='contact'>
-  <form class='bg-black pl-60 pr-20 py-20 max-w-[55%] flex flex-col'>
-    <h2 class='text-white text-3xl font-extrabold mb-16 text-center'>
+  <form class='bg-black/90 pl-60 pr-20 py-20 max-w-[55%] flex flex-col'>
+    <h2 class='text-white text-3xl font-extrabold mb-16 text-left'>
       Contact Us
     </h2>
     <div class='grid grid-cols-2 gap-8'>
@@ -72,7 +72,7 @@
     <div class='mt-6'>
       <button
         type='submit'
-        class='px-6 py-3 bg-red-600 text-white font-medium focus:outline-none'
+        class='px-6 py-3 bg-black text-white font-medium hover:bg-white hover:text-black border border-black transition-colors duration-300 focus:outline-none'
       >
         Submit Now
       </button>
@@ -82,11 +82,9 @@
 
 <style>
   section {
-    background-image: linear-gradient(
-      to right,
-      transparent 50%,
-      #d9d9d9 50%,
-      #d9d9d9 100%
-    );
+    background-image: url("/contact/main.png");
+    background-size: 50% 100%;
+    background-position: right;
+    background-repeat: no-repeat;
   }
 </style>
