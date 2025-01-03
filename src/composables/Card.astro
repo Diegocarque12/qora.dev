@@ -10,58 +10,60 @@ interface Props {
 const { category, title, description, img, link } = Astro.props;
 ---
 
-<div class='relative overflow-hidden group w-full max-w-[416px] mx-auto'>
+<div class="relative overflow-hidden group w-full max-w-[416px] mx-auto">
   <svg
-    width='100%'
-    height='100%'
-    viewBox='0 0 416 505'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-    class='transition-all duration-300'
-    preserveAspectRatio='none'
+    width="100%"
+    height="100%"
+    viewBox="0 0 416 505"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="transition-all duration-300"
+    preserveAspectRatio="none"
   >
-    <path d='M0.5 0.5H415.5V434.304L350.282 504.5H0.5V0.5Z' stroke='#E4E4E4'>
+    <path d="M0.5 0.5H415.5V434.304L350.282 504.5H0.5V0.5Z" stroke="#E4E4E4">
     </path>
   </svg>
   <div
-    class='absolute top-0 p-4 sm:p-6 md:p-8 flex flex-col gap-2 sm:gap-3 md:gap-4 transition-all duration-300 ease-in-out group-hover:translate-y-[-10px]'
+    class="absolute top-0 p-4 sm:p-6 md:p-8 flex flex-col gap-2 sm:gap-3 md:gap-4 transition-all duration-300 ease-in-out group-hover:translate-y-[-10px]"
   >
-    <p class='mb-1 sm:mb-2 text-left text-sm sm:text-base'>• {category}</p>
-    <h3 class='text-lg sm:text-xl font-semibold mb-2 sm:mb-4 text-left'>
+    <p class="mb-1 sm:mb-2 text-left text-sm sm:text-base">• {category}</p>
+    <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 text-left">
       {title}.
     </h3>
-    <div class='flex items-start h-auto'>
+    <div class="flex items-start h-auto">
       <img
         src={img}
-        alt='abstract-design'
-        class='h-16 sm:h-20 md:h-24 w-auto mb-4 sm:mb-6 md:mb-8 transition-all duration-300 ease-in-out group-hover:brightness-110'
+        width="96px"
+        height="96px"
+        alt="abstract-design"
+        class="h-16 sm:h-20 md:h-24 w-auto mb-4 sm:mb-6 md:mb-8 transition-all duration-300 ease-in-out group-hover:brightness-110"
       />
     </div>
-    <p class='text-sm sm:text-base text-left'>
+    <p class="text-sm sm:text-base text-left">
       {description}
     </p>
   </div>
-  <div class='absolute bottom-0 right-0'>
+  <div class="absolute bottom-0 right-0">
     <a
       href={link}
-      class='w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-secondary text-secondary-foreground rounded-full border flex items-center justify-center bg-white hover:bg-black hover:text-white hover:rotate-[-45deg] transition-all duration-300'
+      class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-secondary text-secondary-foreground rounded-full border flex items-center justify-center bg-white hover:bg-black hover:text-white hover:rotate-[-45deg] transition-all duration-300"
     >
-      <span class='sr-only'>Go to {title}</span>
+      <span class="sr-only">Go to {title}</span>
       <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='20'
-        height='20'
-        viewBox='0 0 24 24'
-        fill='none'
-        stroke='currentColor'
-        stroke-width='1'
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        aria-hidden='true'
-        class='transition-all duration-100 ease-in-out sm:w-[22px] sm:h-[22px] md:w-6 md:h-6'
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        class="transition-all duration-100 ease-in-out sm:w-[22px] sm:h-[22px] md:w-6 md:h-6"
       >
-        <line x1='3' y1='12' x2='21' y2='12'></line>
-        <polyline points='15 6 21 12 15 18'></polyline>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <polyline points="15 6 21 12 15 18"></polyline>
       </svg>
     </a>
   </div>
