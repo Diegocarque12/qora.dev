@@ -1,92 +1,154 @@
+---
+const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
+---
+
 <section
-  class='pt-24 pb-16 mb-16 md:pt-16 sm:pt-12'
-  data-aos='fade-up'
-  id='contact'
+  class="pt-24 pb-16 mb-16 md:pt-16 sm:pt-12 scroll-top-20"
+  data-aos="fade-up"
+  id="contact"
 >
   <form
-    class='bg-black/90 px-4 sm:px-6 md:px-8 lg:pl-60 lg:pr-20 py-12 md:py-16 lg:py-20 w-full lg:max-w-[55%] flex flex-col'
+    id="contactForm"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    class="bg-black/90 px-4 sm:px-6 md:px-8 lg:pl-60 lg:pr-20 py-12 md:py-16 lg:py-20 w-full lg:max-w-[55%] flex flex-col"
   >
+    <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
     <h2
-      class='text-white text-2xl md:text-3xl font-extrabold mb-8 md:mb-16 text-left'
+      class="text-white text-2xl md:text-3xl font-extrabold mb-8 md:mb-16 text-left"
     >
       Contact Us
     </h2>
-    <div class='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'>
-      <div class='mb-6'>
-        <label for='name' class='block text-sm font-medium text-white mb-2'
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div class="mb-6">
+        <label for="name" class="block text-sm font-medium text-white mb-2"
           >Name</label
         >
         <input
-          type='text'
-          id='name'
-          name='name'
-          placeholder='Enter Your Name'
-          class='w-full pr-4 py-2 bg-transparent text-[#464946] border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none'
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter Your Name"
+          class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
+          autocomplete="off"
         />
       </div>
-      <div class='mb-6'>
-        <label for='lastName' class='block text-sm font-medium text-white mb-2'
+      <div class="mb-6">
+        <label for="lastName" class="block text-sm font-medium text-white mb-2"
           >Last Name</label
         >
         <input
-          type='text'
-          id='lastName'
-          name='lastName'
-          placeholder='Enter Your Last Name'
-          class='w-full pr-4 py-2 bg-transparent text-[#464946] border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none'
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Enter Your Last Name"
+          class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
+          autocomplete="off"
         />
       </div>
-      <div class='mb-6'>
-        <label for='email' class='block text-sm font-medium text-white mb-2'
+      <div class="mb-6">
+        <label for="email" class="block text-sm font-medium text-white mb-2"
           >Email</label
         >
         <input
-          type='email'
-          id='email'
-          name='email'
-          placeholder='Enter Your Email'
-          class='w-full pr-4 py-2 bg-transparent text-[#464946] border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none'
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter Your Email"
+          class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
+          autocomplete="off"
         />
       </div>
-      <div class='mb-6'>
-        <label for='phone' class='block text-sm font-medium text-white mb-2'
+      <div class="mb-6">
+        <label for="phone" class="block text-sm font-medium text-white mb-2"
           >Phone</label
         >
         <input
-          type='tel'
-          id='phone'
-          name='phone'
-          placeholder='Enter Your Phone Number'
-          class='w-full pr-4 py-2 bg-transparent text-[#464946] border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none'
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Enter Your Phone Number"
+          class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
+          autocomplete="off"
         />
       </div>
     </div>
-    <div class='mb-6'>
-      <label for='message' class='block text-sm font-medium text-white mb-2'
+    <div class="mb-6">
+      <label for="message" class="block text-sm font-medium text-white mb-2"
         >Message</label
       >
       <textarea
-        id='message'
-        name='message'
-        rows='4'
-        placeholder='Enter Your Message'
-        class='w-full pr-4 py-2 bg-transparent text-[#464946] border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none'
-        required></textarea>
+        id="message"
+        name="message"
+        rows="4"
+        placeholder="Enter Your Message"
+        class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
+        required
+        autocomplete="off"></textarea>
     </div>
-    <div class='mt-6'>
+    <div class="mt-6">
       <button
-        type='submit'
-        class='w-full sm:w-auto px-6 py-3 bg-black text-white font-medium hover:bg-white hover:text-black border border-black transition-colors duration-300 focus:outline-none'
+        type="submit"
+        class="w-full sm:w-auto px-6 py-3 bg-black text-white font-medium hover:bg-white hover:text-black border border-black transition-colors duration-300 focus:outline-none"
       >
         Submit Now
       </button>
     </div>
+
+    <div id="notification" class="hidden mt-4 p-4 text-center rounded">
+      <p id="notificationText"></p>
+    </div>
   </form>
 </section>
+
+<script>
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const notification = document.getElementById("notification") as HTMLElement;
+  const notificationText = document.getElementById(
+    "notificationText"
+  ) as HTMLElement;
+
+  if (form && notification && notificationText) {
+    form.addEventListener("submit", async (e: Event) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+        });
+        const data: { success: boolean } = await response.json();
+
+        if (data.success) {
+          notification.className =
+            "mt-4 p-4 bg-green-100 text-green-700 rounded";
+          notificationText.textContent = "Message sent successfully!";
+          form.reset();
+        } else {
+          notification.className = "mt-4 p-4 bg-red-100 text-red-700 rounded";
+          notificationText.textContent =
+            "Something went wrong. Please try again.";
+        }
+      } catch (error) {
+        notification.className = "mt-4 p-4 bg-red-100 text-red-700 rounded";
+        notificationText.textContent =
+          "Error sending message. Please try again.";
+      }
+
+      notification.classList.remove("hidden");
+
+      // Hide notification after 5 seconds
+      setTimeout(() => {
+        notification.classList.add("hidden");
+      }, 5000);
+    });
+  }
+</script>
 
 <style>
   section {
