@@ -46,11 +46,13 @@
 
     {Astro.url.pathname === '/' ? (
       <a href='#hero' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Home</a>
+      <a href='#services' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Services</a>
       <a href='#projects' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Projects</a>
       <a href='#about' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>About</a>
       <a href='#contact' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Contact us</a>
     ) : (
       <a href='/' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Home</a>
+      <a href='/#services' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Services</a>
       <a href='/#projects' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Projects</a>
       <a href='/#about' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>About</a>
       <a href='/#contact' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Contact us</a>
@@ -66,8 +68,6 @@
 
 <script>
   import { initMenu } from "@/scripts/menu.js";
-
-  // Ejecuta initMenu inmediatamente si el DOM ya está listo
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initMenu);
   } else {
