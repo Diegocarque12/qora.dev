@@ -7,12 +7,7 @@ const blog = defineCollection({
     pubDate: z.date(),
     description: z.string(),
     author: z.string(),
-    image: z
-      .object({
-        url: z.string().url(),
-        alt: z.string(),
-      })
-      .optional(),
+    image: z.object({ url: z.string().url(), alt: z.string() }).optional(),
     tags: z.array(z.string()).default([]),
   }),
 });
