@@ -11,4 +11,14 @@ tags: ["astro", "blogging", "learning in public"]
 
 This is my first blog post. I'm excited to share my journey with you.
 All the code for this blog was created following the Astro blog tutorial.
-But all the content is my own.
+I will be publishing content related:
+
+- UI & UX: How to create intuitive and attractive interfaces
+
+- Accessibility: Design and development for everyone
+
+- Performance: Optimization for fast and scalable applications
+
+- Fundamentals: HTML, CSS, JavaScript, and best practices
+
+- Tools and techniques I discover along the way
