@@ -1,4 +1,5 @@
 ---
+import FooterLayout from "@/layouts/FooterLayout.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -21,58 +22,58 @@ const formatDate = (date: string) => {
 };
 ---
 
-<Layout title="Blog">
-  <main class="max-w-prose mx-auto px-4 py-8 md:px-0 font-system">
-    <header class="mb-16">
-      <h1 class="text-4xl md:text-6xl font-bold text-black mb-6 leading-tight">
+<Layout title='Blog'>
+  <main class='max-w-prose mx-auto px-4 py-8 md:px-0 font-system min-h-screen'>
+    <header class='mb-16'>
+      <h1 class='text-4xl md:text-6xl font-bold text-black mb-6 leading-tight'>
         My Learning Blog
       </h1>
-      <p class="text-xl text-gray-600 leading-relaxed">
+      <p class='text-xl text-gray-600 leading-relaxed'>
         This is where I document my journey learning and improving my skills as
         Frontend Engineer, sharing insights, discoveries, and lessons along the
         way.
       </p>
     </header>
 
-    <section class="space-y-12">
-      <div class="border-t border-gray-200 pt-8">
+    <section class='space-y-12'>
+      <div class='border-t border-gray-200 pt-8'>
         <h2
-          class="text-lg font-semibold text-black mb-8 uppercase tracking-wide"
+          class='text-lg font-semibold text-black mb-8 uppercase tracking-wide'
         >
           Recent Posts
         </h2>
 
         {
           posts.length > 0 ? (
-            <div class="space-y-8">
+            <div class='space-y-8'>
               {posts.map((post: any) => (
-                <article class="group">
+                <article class='group'>
                   <a
                     href={`/blog/${post.slug}/`}
-                    class="block hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-200"
+                    class='block hover:bg-gray-50 p-4 -m-4 rounded-lg transition-colors duration-200'
                   >
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 mb-3">
-                      <time class="text-sm font-medium text-gray-500 order-2 md:order-1">
+                    <div class='flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 mb-3'>
+                      <time class='text-sm font-medium text-gray-500 order-2 md:order-1'>
                         {formatDate(post.data.pubDate)}
                       </time>
                       {post.data.author && (
-                        <span class="text-sm text-gray-400 order-3 md:order-2">
+                        <span class='text-sm text-gray-400 order-3 md:order-2'>
                           by {post.data.author}
                         </span>
                       )}
                     </div>
 
-                    <h3 class="text-2xl font-bold text-black mb-3 group-hover:underline decoration-2 underline-offset-4">
+                    <h3 class='text-2xl font-bold text-black mb-3 group-hover:underline decoration-2 underline-offset-4'>
                       {post.data.title}
                     </h3>
 
                     {post.data.description && (
-                      <p class="text-gray-600 leading-relaxed">
+                      <p class='text-gray-600 leading-relaxed'>
                         {post.data.description}
                       </p>
                     )}
 
-                    <div class="mt-4 text-sm font-medium text-black group-hover:underline">
+                    <div class='mt-4 text-sm font-medium text-black group-hover:underline'>
                       Read more →
                     </div>
                   </a>
@@ -80,20 +81,20 @@ const formatDate = (date: string) => {
               ))}
             </div>
           ) : (
-            <div class="text-center py-16 text-gray-500">
-              <p class="text-lg mb-4">No posts yet</p>
-              <p class="text-sm">Check back soon for new content!</p>
+            <div class='text-center py-16 text-gray-500'>
+              <p class='text-lg mb-4'>No posts yet</p>
+              <p class='text-sm'>Check back soon for new content!</p>
             </div>
           )
         }
       </div>
 
       {
-        posts.length > 0 && (
-          <div class="border-t border-gray-200 pt-8 text-center">
+        posts.length > 2 && (
+          <div class='border-t border-gray-200 pt-8 text-center'>
             <a
-              href="/archive/"
-              class="inline-block text-black font-medium hover:underline decoration-2 underline-offset-4"
+              href='/archive/'
+              class='inline-block text-black font-medium hover:underline decoration-2 underline-offset-4'
             >
               View all posts →
             </a>
@@ -102,6 +103,7 @@ const formatDate = (date: string) => {
       }
     </section>
   </main>
+  <FooterLayout />
 </Layout>
 
 <style>

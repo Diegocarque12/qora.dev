@@ -11,50 +11,49 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset='UTF-8' />
     <meta
-      name="description"
-      content="Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses."
+      name='description'
+      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
     <meta
-      name="keywords"
-      content="web development, digital agency, web design, responsive websites, web applications, Qora, professional web services, UI/UX design, user experience, user interface, SaaS development, software development, accessibility, WCAG compliance, web performance optimization, landing page design, website branding, custom web solutions, scalable applications, digital transformation, user-centered design, frontend development, backend development, responsive design, mobile-first design, website optimization, digital solutions, business websites"
+      name='keywords'
+      content='web development, digital agency, web design, responsive websites, web applications, Qora, professional web services, UI/UX design, user experience, user interface, SaaS development, software development, accessibility, WCAG compliance, web performance optimization, landing page design, website branding, custom web solutions, scalable applications, digital transformation, user-centered design, frontend development, backend development, responsive design, mobile-first design, website optimization, digital solutions, business websites'
     />
-    <meta name="author" content="Qora Digital Agency" />
-    <meta property="og:title" content={`${title} | Qora Digital Agency`} />
+    <meta name='author' content='Qora Digital Agency' />
+    <meta property='og:title' content={`${title} | Qora Digital Agency`} />
     <meta
-      property="og:description"
-      content="Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses."
+      property='og:description'
+      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
     />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | Qora Digital Agency`} />
+    <meta property='og:type' content='website' />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={`${title} | Qora Digital Agency`} />
     <meta
-      name="twitter:description"
-      content="Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses."
+      name='twitter:description'
+      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
     />
     <title>{title} | Qora Digital Agency</title>
     <link
-      rel="preload"
-      href="https://unpkg.com/aos@next/dist/aos.css"
-      as="style"
+      rel='preload'
+      href='https://unpkg.com/aos@next/dist/aos.css'
+      as='style'
       onload="this.onload=null; this.rel='stylesheet'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-      <link rel="stylesheet" href="/_astro/all-services.D8ft1x2g.css" />
+      <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css' />
+      <link rel='stylesheet' href='/_astro/all-services.D8ft1x2g.css' />
     </noscript>
   </head>
   <body>
     <Header />
     <slot />
-    <Footer />
-    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline src='https://unpkg.com/aos@next/dist/aos.js'></script>
     <script is:inline>
       AOS.init({
         duration: 1000,
