@@ -1,53 +1,68 @@
 ---
 import "@fontsource-variable/onest";
 import Header from "@/components/Header.astro";
+import { SITE } from "@/config/site";
 
 interface Props {
-  title: string;
+  /** Page name without the brand; the layout appends it once. */
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const DEFAULT_TITLE = "Qora — Custom Web & SaaS Development";
+const DEFAULT_DESCRIPTION =
+  "Web development studio. We build custom SaaS products and websites — like PrimeFit and Dask — for businesses that want to run better online.";
+
+const {
+  title,
+  description = DEFAULT_DESCRIPTION,
+  ogImage = SITE.ogImage ?? undefined,
+  noindex = false,
+} = Astro.props;
+
+const pageTitle = title ? `${title} — ${SITE.name}` : DEFAULT_TITLE;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url);
+const shareImage = ogImage ? new URL(ogImage, Astro.site ?? SITE.url) : null;
 ---
 
 <!doctype html>
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
-    <meta
-      name='description'
-      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
-    />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <meta
-      name='keywords'
-      content='web development, digital agency, web design, responsive websites, web applications, Qora, professional web services, UI/UX design, user experience, user interface, SaaS development, software development, accessibility, WCAG compliance, web performance optimization, landing page design, website branding, custom web solutions, scalable applications, digital transformation, user-centered design, frontend development, backend development, responsive design, mobile-first design, website optimization, digital solutions, business websites'
-    />
-    <meta name='author' content='Qora Digital Agency' />
-    <meta property='og:title' content={`${title} | Qora Digital Agency`} />
-    <meta
-      property='og:description'
-      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
-    />
+
+    <title>{pageTitle}</title>
+    <meta name='description' content={description} />
+    <meta name='author' content={SITE.author} />
+    <link rel='canonical' href={canonical} />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    {noindex && <meta name='robots' content='noindex, nofollow' />}
+
     <meta property='og:type' content='website' />
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:title' content={`${title} | Qora Digital Agency`} />
+    <meta property='og:site_name' content={SITE.name} />
+    <meta property='og:url' content={canonical} />
+    <meta property='og:title' content={pageTitle} />
+    <meta property='og:description' content={description} />
+    {shareImage && <meta property='og:image' content={shareImage} />}
+
     <meta
-      name='twitter:description'
-      content='Qora - Professional Web Development Agency. We create modern, responsive and high-performance websites and web applications for businesses.'
+      name='twitter:card'
+      content={shareImage ? "summary_large_image" : "summary"}
     />
-    <title>{title} | Qora Digital Agency</title>
+    <meta name='twitter:title' content={pageTitle} />
+    <meta name='twitter:description' content={description} />
+    {shareImage && <meta name='twitter:image' content={shareImage} />}
+
     <link
       rel='preload'
       href='https://unpkg.com/aos@next/dist/aos.css'
       as='style'
       onload="this.onload=null; this.rel='stylesheet'"
     />
-    <noscript>
-      <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css' />
-      <link rel='stylesheet' href='/_astro/all-services.D8ft1x2g.css' />
-    </noscript>
   </head>
   <body>
     <Header />
