@@ -1,6 +1,10 @@
 ---
-import Button from "@/composables/buttons/Button.astro";
-import { getLang, useTranslations } from "@/i18n/utils";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import ExternalLink from "@/assets/icons/ExternalLink.astro";
+import { caseStudies } from "@/config/caseStudies";
+import { featuredSites } from "@/config/featuredSites";
+import { getLang, localizePath, useTranslations } from "@/i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -12,45 +16,109 @@ const serviceImages = [
   "/all-services/saas.webp",
 ];
 
-const featuredAssets = [
-  {
-    image: "/all-services/projects/indigo.webp",
-    url: "https://www.indigoexportco.com/",
-  },
-  {
-    image: "/all-services/projects/agromig.webp",
-    url: "https://haciendaagromig.com",
-  },
-  {
-    image: "/all-services/projects/primefit.webp",
-    url: "https://www.primefit.coach",
-  },
-];
+const siteImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/sites/*.{avif,jpg,jpeg,png,webp}",
+  { eager: true }
+);
 
-const delays = ["200", "400", "600"];
+const caseImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/projects/*/*.{avif,jpg,jpeg,png,webp}",
+  { eager: true }
+);
+
+/** A case study's cover is the first image of its gallery, by file name. */
+function caseCover(id: string): ImageMetadata | undefined {
+  const [first] = Object.entries(caseImages)
+    .filter(([path]) => path.includes(`/projects/${id}/`))
+    .sort(([a], [b]) => a.localeCompare(b));
+  return first?.[1].default;
+}
+
+const products = caseStudies.map((study) => ({
+  ...study,
+  copy: t.projects.cases[study.id],
+  cover: caseCover(study.id),
+  href: localizePath(`/projects/${study.id}`, lang),
+}));
+
+const sites = featuredSites.map((site) => ({
+  ...site,
+  copy: t.allServices.sites[site.id],
+  cover: siteImages[`/src/assets/sites/${site.id}.webp`]?.default,
+}));
+
+const homePath = localizePath("/", lang);
+const delays = ["0", "150", "300"];
+
+const externalLinkClass =
+  "inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors underline-offset-4 hover:underline";
 ---
 
 <main class='bg-white'>
-  <section class='container mx-auto px-8 py-16 md:py-24'>
-    <div class='max-w-4xl mx-auto text-center'>
+  <section class='container mx-auto px-8 pt-16 pb-12 md:pt-24 md:pb-16'>
+    <div class='max-w-4xl mx-auto text-center flex flex-col items-center gap-6'>
+      <span
+        class='flex gap-2 items-center text-sm font-medium text-gray-500'
+        data-aos='fade-down'
+      >
+        <svg width='40' height='20' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+          <line x1='0' y1='10' x2='30' y2='10' stroke='currentColor' stroke-width='1'
+          ></line>
+          <circle cx='35' cy='10' r='4' fill='none' stroke='currentColor'></circle>
+        </svg>
+        {t.allServices.title}
+      </span>
       <h1
-        class='text-4xl md:text-6xl font-bold mb-6'
+        class='text-4xl md:text-6xl font-extrabold text-balance'
         data-aos='fade-up'
         data-aos-duration='800'
       >
         {t.allServices.heading}
       </h1>
       <p
-        class='text-xl text-gray-600 mb-12'
+        class='text-lg md:text-xl text-gray-600 text-pretty'
         data-aos='fade-up'
-        data-aos-delay='200'
+        data-aos-delay='150'
         data-aos-duration='800'
       >
         {t.allServices.intro}
       </p>
+      <div
+        class='flex flex-wrap justify-center items-center gap-4 mt-2'
+        data-aos='fade-up'
+        data-aos-delay='300'
+      >
+        <a
+          href={`${homePath}#contact`}
+          class='inline-flex items-center gap-2 bg-black text-white px-8 py-3 text-lg font-semibold transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg'
+        >
+          {t.allServices.heroCtaPrimary}
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            class='h-5 w-5'
+            viewBox='0 0 20 20'
+            fill='currentColor'
+            aria-hidden='true'
+          >
+            <path
+              fill-rule='evenodd'
+              d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z'
+              clip-rule='evenodd'></path>
+          </svg>
+        </a>
+        <a
+          href='#projects'
+          class='inline-flex items-center px-6 py-3 rounded-full border-2 border-gray-200 hover:bg-gray-100 transition-colors duration-300'
+        >
+          {t.allServices.heroCtaSecondary}
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
+  <section class='container mx-auto px-8 pb-16 md:pb-24'>
+    <h2 class='sr-only'>{t.allServices.title}</h2>
+    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
       {
         t.allServices.services.map((service, index) => (
           <article
@@ -67,93 +135,221 @@ const delays = ["200", "400", "600"];
               decoding="async"
               class='w-full h-48 object-cover rounded-lg mb-6'
             />
-            <h2 class='text-2xl font-bold mb-4'>{service.title}</h2>
+            <h3 class='text-2xl font-bold mb-4'>{service.title}</h3>
             <p class='text-gray-600'>{service.description}</p>
           </article>
         ))
       }
     </div>
+  </section>
 
-    <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
-      <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
-        {t.allServices.expertiseHeading}
-      </h2>
-      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {
-          t.allServices.expertise.map((item, index) => (
-            <div
-              class='p-6 bg-white rounded-xl'
-              data-aos='fade-up'
-              data-aos-delay={delays[index]}
-            >
-              <h3 class='text-2xl font-bold mb-4'>{item.title}</h3>
-              <p class='text-gray-600'>{item.description}</p>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class='mt-24'>
-      <h2
-        class='text-3xl md:text-5xl font-bold text-center mb-16'
-        data-aos='fade-up'
+  <section
+    class='bg-[#111111] text-white relative overflow-hidden scroll-mt-20'
+    id='projects'
+  >
+    <div class='absolute bottom-0 left-0 hidden sm:block' aria-hidden='true'>
+      <svg
+        width='100%'
+        height='250'
+        viewBox='0 0 287 83'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        class='max-w-[500px]'
       >
-        {t.allServices.featuredHeading}
-      </h2>
-      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <path
+          opacity='0.1'
+          d='M38.5641 1L2 29.2919H75.6292L34.0562 61.4593H106.183V82H287'
+          stroke='#E4E4E4'></path>
+      </svg>
+    </div>
+
+    <div class='container mx-auto px-8 py-16 md:py-24 relative'>
+      <div class='max-w-3xl flex flex-col gap-4 mb-12'>
+        <span class='flex gap-2 items-center text-sm font-medium'>
+          <svg width='40' height='20' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <line x1='0' y1='10' x2='30' y2='10' stroke='white' stroke-width='1'
+            ></line>
+            <circle cx='35' cy='10' r='4' fill='none' stroke='white'></circle>
+          </svg>
+          {t.allServices.projectsEyebrow}
+        </span>
+        <h2 class='text-3xl md:text-5xl font-bold' data-aos='fade-up'>
+          {t.allServices.projectsHeading}
+        </h2>
+        <p class='text-gray-300'>{t.allServices.projectsIntro}</p>
+      </div>
+
+      <h3 class='text-xs uppercase tracking-widest text-gray-400 font-semibold mb-6'>
+        {t.allServices.ownProductsLabel}
+      </h3>
+      <div class='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16'>
         {
-          t.allServices.featured.map((project, index) => (
-            <div
-              class='project-card'
+          products.map((product, index) => (
+            <article
+              class='border border-white/15 flex flex-col transition-colors duration-300 hover:border-white/40'
               data-aos='fade-up'
               data-aos-delay={delays[index]}
             >
-              <img
-                src={featuredAssets[index].image}
-                alt={project.imageAlt}
-                width="400"
-                height="256"
-                loading="lazy"
-                decoding="async"
-                class='w-full h-64 object-cover rounded-xl mb-6'
-              />
-              <h3 class='text-2xl font-bold mb-4'>{project.title}</h3>
-              <p class='text-gray-600 mb-4'>{project.outcome}</p>
-              <Button
-                link={featuredAssets[index].url}
-                openTab={true}
-                label={t.allServices.visitSite}
-              />
+              {product.cover && (
+                <Image
+                  src={product.cover}
+                  alt={product.copy.tag}
+                  widths={[480, 800]}
+                  sizes='(min-width: 1024px) 50vw, 100vw'
+                  class='w-full h-56 sm:h-72 object-cover object-top border-b border-white/15'
+                  loading='lazy'
+                />
+              )}
+              <div class='flex flex-col gap-3 p-6 sm:p-8'>
+                <span class='text-xs uppercase tracking-wide text-gray-400'>
+                  {product.copy.tag}
+                </span>
+                <h4 class='text-2xl sm:text-3xl font-bold'>{product.name}</h4>
+                <p class='text-sm text-gray-300'>{product.copy.whatItIs}</p>
+                {product.copy.outcome && (
+                  <p class='text-sm border-l-2 border-white/40 pl-4'>
+                    <span class='block text-xs uppercase tracking-wide text-gray-400'>
+                      {t.projects.outcomeLabel}
+                    </span>
+                    {product.copy.outcome}
+                  </p>
+                )}
+                <div class='flex flex-wrap items-center gap-x-6 gap-y-3 mt-2'>
+                  <a
+                    href={product.href}
+                    class='inline-flex items-center gap-2 text-sm font-medium underline-offset-4 hover:underline'
+                  >
+                    {t.projects.readCase}
+                    <svg
+                      width='40'
+                      height='8'
+                      viewBox='0 0 50 10'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                      aria-hidden='true'
+                    >
+                      <path d='M0.231934 1L48.0951 1L36.0525 9' stroke='currentColor'
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    href={product.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    class={externalLinkClass}
+                  >
+                    {product.domain}
+                    <ExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <h3 class='text-xs uppercase tracking-widest text-gray-400 font-semibold mb-6'>
+        {t.allServices.sitesLabel}
+      </h3>
+      <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {
+          sites.map((site, index) => (
+            <article
+              class='border border-white/15 flex flex-col transition-colors duration-300 hover:border-white/40'
+              data-aos='fade-up'
+              data-aos-delay={delays[index % delays.length]}
+            >
+              {site.cover && (
+                <Image
+                  src={site.cover}
+                  alt={site.copy.imageAlt}
+                  widths={[400, 640]}
+                  sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
+                  class='w-full h-48 object-cover object-top border-b border-white/15'
+                  loading='lazy'
+                />
+              )}
+              <div class='flex flex-col gap-2 p-6 flex-grow'>
+                <h4 class='text-lg font-semibold'>{site.name}</h4>
+                <p class='text-sm text-gray-400 flex-grow'>
+                  {site.copy.description}
+                </p>
+                <a
+                  href={site.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class={`${externalLinkClass} mt-2`}
+                >
+                  {site.domain}
+                  <ExternalLink />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class='container mx-auto px-8 py-16 md:py-24'>
+    <div
+      class='bg-gray-50 rounded-3xl p-8 md:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12'
+      data-aos='fade-up'
+    >
+      <div class='flex flex-col gap-4'>
+        <span class='flex gap-2 items-center text-sm font-medium text-gray-500'>
+          <svg width='40' height='20' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <line x1='0' y1='10' x2='30' y2='10' stroke='currentColor' stroke-width='1'
+            ></line>
+            <circle cx='35' cy='10' r='4' fill='none' stroke='currentColor'></circle>
+          </svg>
+          {t.allServices.uxEyebrow}
+        </span>
+        <h2 class='text-3xl md:text-4xl font-extrabold text-balance'>
+          {t.allServices.uxHeading}
+        </h2>
+        <p class='text-gray-600 text-pretty leading-relaxed'>
+          {t.allServices.uxBody}
+        </p>
+      </div>
+      <div class='flex flex-col gap-6 justify-center'>
+        {
+          t.allServices.uxCards.map((card) => (
+            <div class='bg-white rounded-xl p-6'>
+              <h3 class='text-xl font-bold mb-2'>{card.title}</h3>
+              <p class='text-gray-600'>{card.body}</p>
             </div>
           ))
         }
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
-      <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
-        {t.allServices.testimonialsHeading}
-      </h2>
-      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {
-          t.allServices.testimonials.map((testimonial, index) => (
-            <figure
-              class='bg-white p-8 rounded-xl'
-              data-aos='fade-up'
-              data-aos-delay={delays[index]}
-            >
-              <blockquote class='text-gray-600 mb-6'>
-                “{testimonial.quote}”
-              </blockquote>
-              <figcaption>
-                <span class='font-bold block'>{testimonial.name}</span>
-                <span class='text-gray-500'>{testimonial.company}</span>
-              </figcaption>
-            </figure>
-          ))
-        }
-      </div>
-    </section>
+  <section class='container mx-auto px-8 pb-16 md:pb-24'>
+    <h2
+      class='text-3xl md:text-5xl font-bold text-center mb-12'
+      data-aos='fade-up'
+    >
+      {t.allServices.testimonialsHeading}
+    </h2>
+    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+      {
+        t.allServices.testimonials.map((testimonial, index) => (
+          <figure
+            class='bg-gray-50 p-8 rounded-xl'
+            data-aos='fade-up'
+            data-aos-delay={delays[index]}
+          >
+            <blockquote class='text-gray-600 mb-6'>
+              “{testimonial.quote}”
+            </blockquote>
+            <figcaption>
+              <span class='font-bold block'>{testimonial.name}</span>
+              <span class='text-gray-500'>{testimonial.company}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
   </section>
 </main>

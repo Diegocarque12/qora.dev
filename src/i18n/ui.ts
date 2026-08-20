@@ -1,4 +1,5 @@
 import type { CaseStudyId } from "@/config/caseStudies";
+import type { FeaturedSiteId } from "@/config/featuredSites";
 
 export const languages = {
   es: "Español",
@@ -8,6 +9,26 @@ export const languages = {
 export type Lang = keyof typeof languages;
 
 export const defaultLang: Lang = "es";
+
+/**
+ * The two service pages share an anatomy — hero, three features, a portfolio
+ * slice, and a closing call to action — so they share a copy shape too.
+ */
+export interface ServicePageCopy {
+  title: string;
+  heading: string;
+  intro: string;
+  features: readonly {
+    readonly title: string;
+    readonly description: string;
+    readonly imageAlt: string;
+  }[];
+  projectsHeading: string;
+  projectsIntro: string;
+  ctaHeading: string;
+  ctaBody: string;
+  ctaButton: string;
+}
 
 export interface Dictionary {
   meta: {
@@ -137,23 +158,33 @@ export interface Dictionary {
     title: string;
     heading: string;
     intro: string;
+    heroCtaPrimary: string;
+    heroCtaSecondary: string;
     services: readonly {
       readonly title: string;
       readonly description: string;
       readonly imageAlt: string;
     }[];
-    expertiseHeading: string;
-    expertise: readonly {
+    projectsEyebrow: string;
+    projectsHeading: string;
+    projectsIntro: string;
+    ownProductsLabel: string;
+    sitesLabel: string;
+    /** Prose for each client website, keyed by the config id. */
+    sites: Record<
+      FeaturedSiteId,
+      {
+        readonly description: string;
+        readonly imageAlt: string;
+      }
+    >;
+    uxEyebrow: string;
+    uxHeading: string;
+    uxBody: string;
+    uxCards: readonly {
       readonly title: string;
-      readonly description: string;
+      readonly body: string;
     }[];
-    featuredHeading: string;
-    featured: readonly {
-      readonly title: string;
-      readonly outcome: string;
-      readonly imageAlt: string;
-    }[];
-    visitSite: string;
     testimonialsHeading: string;
     testimonials: readonly {
       readonly quote: string;
@@ -161,6 +192,8 @@ export interface Dictionary {
       readonly company: string;
     }[];
   };
+  marketingWebsites: ServicePageCopy;
+  webApplications: ServicePageCopy;
 }
 
 export const ui = {
@@ -376,7 +409,9 @@ export const ui = {
       title: "Servicios",
       heading: "Servicios y soluciones digitales",
       intro:
-        "Desde el diseño de un sitio hasta una plataforma completa: esto es lo que podemos construir contigo.",
+        "Nuestro fuerte es la experiencia de usuario: diseñamos productos que la gente entiende a la primera, y los construimos de principio a fin — desde un sitio hasta una plataforma completa.",
+      heroCtaPrimary: "Hablemos",
+      heroCtaSecondary: "Ver proyectos",
       services: [
         {
           title: "Diseño web",
@@ -397,43 +432,48 @@ export const ui = {
           imageAlt: "Panel de administración de una plataforma SaaS",
         },
       ],
-      expertiseHeading: "En qué somos fuertes",
-      expertise: [
-        {
-          title: "Diseño UI/UX",
-          description:
-            "Interfaces claras y recorridos que la gente entiende sin tener que pensarlo.",
+      projectsEyebrow: "Portafolio",
+      projectsHeading: "Proyectos que puedes visitar hoy",
+      projectsIntro:
+        "No son maquetas ni conceptos: cada proyecto está en producción, con gente real usándolo. Haz clic y compruébalo.",
+      ownProductsLabel: "Productos propios",
+      sitesLabel: "Sitios que construimos",
+      sites: {
+        agromig: {
+          description: "Rebranding y landing para exportación agrícola.",
+          imageAlt: "Sitio web de Hacienda Agromig",
         },
+        indigo: {
+          description: "Landing para una exportadora agrícola.",
+          imageAlt: "Sitio web de Indigo Export Co",
+        },
+        saborcallejero: {
+          description: "Sitio con menú y pedidos para una pizzería local.",
+          imageAlt: "Sitio web de Sabor Callejero",
+        },
+        ajmn: {
+          description: "Portafolio de un arquitecto en Puntarenas.",
+          imageAlt: "Sitio web del arquitecto AJ-MN",
+        },
+        catadores: {
+          description: "Sitio para una serie de YouTube con ranking gastronómico.",
+          imageAlt: "Sitio web de Catadores de Cantonés",
+        },
+      },
+      uxEyebrow: "Nuestro fuerte",
+      uxHeading: "La experiencia de usuario, primero",
+      uxBody:
+        "Antes de escribir código entendemos cómo piensa la persona que va a usar el producto. Interfaces claras, recorridos sin fricción y decisiones respaldadas por uso real: eso es lo que hace que un sitio convierta y que una plataforma retenga.",
+      uxCards: [
         {
           title: "Accesibilidad",
-          description:
-            "Sitios conformes con WCAG, para que cualquier persona pueda usarlos.",
+          body: "Sitios conformes con WCAG, para que cualquier persona pueda usarlos.",
         },
         {
           title: "Rendimiento",
-          description:
-            "Optimización de carga y respuesta, porque cada segundo cuesta visitas.",
+          body: "Optimización de carga y respuesta, porque cada segundo cuesta visitas.",
         },
       ],
-      featuredHeading: "Proyectos destacados",
-      featured: [
-        {
-          title: "Diseño completo de landing page",
-          outcome: "200% de aumento en interacción de usuarios",
-          imageAlt: "Landing page de Indigo Export Co",
-        },
-        {
-          title: "Rebranding y landing page",
-          outcome: "150% de aumento en la tasa de conversión",
-          imageAlt: "Landing page de Hacienda Agromig",
-        },
-        {
-          title: "Plataforma SaaS",
-          outcome: "150% de crecimiento en suscripciones mensuales",
-          imageAlt: "Plataforma SaaS de PrimeFit",
-        },
-      ],
-      visitSite: "Ver sitio",
       testimonialsHeading: "Lo que dicen nuestros clientes",
       testimonials: [
         {
@@ -455,6 +495,72 @@ export const ui = {
           company: "Cumba's Gym",
         },
       ],
+    },
+    marketingWebsites: {
+      title: "Sitios web",
+      heading: "Sitios web que trabajan para tu negocio",
+      intro:
+        "Un sitio no es un folleto: es tu mejor vendedor trabajando a toda hora. Diseñamos y construimos sitios que explican con claridad lo que haces y convierten visitas en consultas.",
+      features: [
+        {
+          title: "Diseño a medida",
+          description:
+            "Nada de plantillas genéricas. Diseñamos en Figma sobre tu marca y tu contenido real, y lo revisamos contigo antes de escribir una línea de código.",
+          imageAlt: "Diseño de una interfaz en Figma",
+        },
+        {
+          title: "Rendimiento y SEO",
+          description:
+            "Sitios que cargan rápido en datos móviles y que Google entiende: estructura semántica, metadatos correctos y buenas puntuaciones desde el primer día.",
+          imageAlt: "Métricas de rendimiento de un sitio web",
+        },
+        {
+          title: "Contenido que se entiende",
+          description:
+            "Te ayudamos a ordenar el mensaje: qué ofreces, para quién y qué debe hacer quien llega. Sin relleno ni palabras de moda.",
+          imageAlt: "Redacción de contenido para un sitio web",
+        },
+      ],
+      projectsHeading: "Sitios que hemos construido",
+      projectsIntro:
+        "Todos están en línea. Visítalos y juzga el trabajo por ti mismo.",
+      ctaHeading: "¿Listo para renovar tu sitio?",
+      ctaBody:
+        "Cuéntanos qué necesita tu negocio y te decimos con honestidad qué haríamos y cuánto toma.",
+      ctaButton: "Hablemos",
+    },
+    webApplications: {
+      title: "Aplicaciones web",
+      heading: "Aplicaciones web a la medida de tu operación",
+      intro:
+        "Cuando las hojas de cálculo se quedan cortas y ningún software del mercado encaja, construimos la herramienta que tu negocio necesita — y la mantenemos funcionando.",
+      features: [
+        {
+          title: "Diseñado para tu flujo",
+          description:
+            "Partimos de cómo trabaja tu equipo hoy, no de cómo debería trabajar para que le sirva a un software. La herramienta se adapta a la operación.",
+          imageAlt: "Diagrama del flujo de trabajo de una aplicación",
+        },
+        {
+          title: "Seguridad y escala",
+          description:
+            "Roles y permisos claros, datos protegidos y una arquitectura que aguanta el crecimiento sin tener que empezar de nuevo.",
+          imageAlt: "Panel de control de seguridad de una aplicación",
+        },
+        {
+          title: "Acompañamiento continuo",
+          description:
+            "El lanzamiento es el comienzo. Seguimos mejorando el producto con el uso real de tu equipo y tus clientes.",
+          imageAlt: "Equipo revisando métricas de uso de una aplicación",
+        },
+      ],
+      projectsHeading: "Plataformas que construimos y operamos",
+      projectsIntro:
+        "Son productos propios: los mantenemos todos los días, con clientes reales usándolos.",
+      ctaHeading: "¿Tienes un proceso que da problemas?",
+      ctaBody:
+        "Si tu operación vive en hojas de cálculo y mensajes sueltos, hay una herramienta esperando a ser construida. Cuéntanos el problema.",
+      ctaButton: "Hablemos",
     },
   },
   en: {
@@ -664,7 +770,9 @@ export const ui = {
       title: "Services",
       heading: "Digital services and solutions",
       intro:
-        "From designing a single site to building a full platform: this is what we can build with you.",
+        "User experience is what we're best at: we design products people understand on the first try, and build them end to end — from a single site to a full platform.",
+      heroCtaPrimary: "Let's talk",
+      heroCtaSecondary: "See the work",
       services: [
         {
           title: "Web Design",
@@ -685,43 +793,48 @@ export const ui = {
           imageAlt: "Admin dashboard of a SaaS platform",
         },
       ],
-      expertiseHeading: "What we're good at",
-      expertise: [
-        {
-          title: "UI/UX Design",
-          description:
-            "Clear interfaces and journeys people understand without having to think about them.",
+      projectsEyebrow: "Portfolio",
+      projectsHeading: "Projects you can visit today",
+      projectsIntro:
+        "Not mockups or concepts: every project is in production, with real people using it. Click through and see for yourself.",
+      ownProductsLabel: "Our own products",
+      sitesLabel: "Websites we built",
+      sites: {
+        agromig: {
+          description: "Rebranding and landing page for an agricultural exporter.",
+          imageAlt: "Hacienda Agromig website",
         },
+        indigo: {
+          description: "Landing page for an agricultural export company.",
+          imageAlt: "Indigo Export Co website",
+        },
+        saborcallejero: {
+          description: "Website with menu and ordering for a local pizzeria.",
+          imageAlt: "Sabor Callejero website",
+        },
+        ajmn: {
+          description: "Portfolio for an architect in Puntarenas.",
+          imageAlt: "Website of architect AJ-MN",
+        },
+        catadores: {
+          description: "Website for a YouTube series ranking local food.",
+          imageAlt: "Catadores de Cantonés website",
+        },
+      },
+      uxEyebrow: "What we're best at",
+      uxHeading: "User experience, first",
+      uxBody:
+        "Before we write code we work out how the person using the product thinks. Clear interfaces, journeys without friction, and decisions backed by real usage: that is what makes a site convert and a platform retain.",
+      uxCards: [
         {
           title: "Accessibility",
-          description:
-            "WCAG-compliant sites, so anyone can use what we build.",
+          body: "WCAG-compliant sites, so anyone can use what we build.",
         },
         {
           title: "Performance",
-          description:
-            "Load and response times tuned, because every second costs visits.",
+          body: "Load and response times tuned, because every second costs visits.",
         },
       ],
-      featuredHeading: "Featured projects",
-      featured: [
-        {
-          title: "Complete landing page design",
-          outcome: "200% increase in user engagement",
-          imageAlt: "Indigo Export Co landing page",
-        },
-        {
-          title: "Rebranding and landing page",
-          outcome: "150% increase in conversion rate",
-          imageAlt: "Hacienda Agromig landing page",
-        },
-        {
-          title: "SaaS platform",
-          outcome: "150% growth in monthly subscriptions",
-          imageAlt: "PrimeFit SaaS platform",
-        },
-      ],
-      visitSite: "Visit site",
       testimonialsHeading: "What our clients say",
       testimonials: [
         {
@@ -743,6 +856,72 @@ export const ui = {
           company: "Cumba's Gym",
         },
       ],
+    },
+    marketingWebsites: {
+      title: "Websites",
+      heading: "Websites that work for your business",
+      intro:
+        "A website isn't a brochure: it's your best salesperson working around the clock. We design and build sites that explain clearly what you do and turn visits into inquiries.",
+      features: [
+        {
+          title: "Custom design",
+          description:
+            "No generic templates. We design in Figma around your brand and your real content, and review it with you before writing a line of code.",
+          imageAlt: "Designing an interface in Figma",
+        },
+        {
+          title: "Performance and SEO",
+          description:
+            "Sites that load fast on mobile data and that Google understands: semantic structure, correct metadata, and good scores from day one.",
+          imageAlt: "Performance metrics for a website",
+        },
+        {
+          title: "Content that lands",
+          description:
+            "We help you get the message straight: what you offer, who it's for, and what a visitor should do next. No filler, no buzzwords.",
+          imageAlt: "Writing content for a website",
+        },
+      ],
+      projectsHeading: "Websites we've built",
+      projectsIntro:
+        "They're all online. Visit them and judge the work for yourself.",
+      ctaHeading: "Ready to rebuild your site?",
+      ctaBody:
+        "Tell us what your business needs and we'll tell you honestly what we'd do and how long it takes.",
+      ctaButton: "Let's talk",
+    },
+    webApplications: {
+      title: "Web applications",
+      heading: "Web applications shaped around your operation",
+      intro:
+        "When spreadsheets stop being enough and no off-the-shelf software fits, we build the tool your business actually needs — and keep it running.",
+      features: [
+        {
+          title: "Built around your workflow",
+          description:
+            "We start from how your team works today, not from how it would have to work to suit a piece of software. The tool adapts to the operation.",
+          imageAlt: "Diagram of an application workflow",
+        },
+        {
+          title: "Security and scale",
+          description:
+            "Clear roles and permissions, protected data, and an architecture that handles growth without starting over.",
+          imageAlt: "Security dashboard of an application",
+        },
+        {
+          title: "Ongoing partnership",
+          description:
+            "Launch is the beginning. We keep improving the product with real usage from your team and your customers.",
+          imageAlt: "Team reviewing application usage metrics",
+        },
+      ],
+      projectsHeading: "Platforms we build and run",
+      projectsIntro:
+        "These are our own products: we maintain them every day, with real customers using them.",
+      ctaHeading: "Got a process that keeps breaking?",
+      ctaBody:
+        "If your operation lives in spreadsheets and scattered messages, there's a tool waiting to be built. Tell us about the problem.",
+      ctaButton: "Let's talk",
     },
   },
 } as const satisfies Record<Lang, Dictionary>;
