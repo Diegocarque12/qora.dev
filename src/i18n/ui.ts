@@ -20,7 +20,6 @@ export interface Dictionary {
     projects: string;
     about: string;
     contact: string;
-    blog: string;
     cta: string;
     switchLanguage: string;
     openMenu: string;
@@ -146,7 +145,6 @@ export const ui = {
       projects: "Proyectos",
       about: "Nosotros",
       contact: "Contacto",
-      blog: "Blog",
       cta: "Hablemos",
       switchLanguage: "Ver el sitio en inglés",
       openMenu: "Abrir el menú",
@@ -357,7 +355,6 @@ export const ui = {
       projects: "Projects",
       about: "About",
       contact: "Contact",
-      blog: "Blog",
       cta: "Let's Talk",
       switchLanguage: "View this site in Spanish",
       openMenu: "Open menu",

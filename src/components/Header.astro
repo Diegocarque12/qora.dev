@@ -105,12 +105,6 @@ const navLinkClass =
   </nav>
 
   <div class='flex items-center gap-1'>
-    <!-- The blog is English-only and lives at the root, so it is not localized. -->
-    <a
-      href='/blog'
-      class='hidden lg:inline-block text-black px-5 py-2.5 hover:bg-gray-800 hover:text-white transition-colors rounded-md font-medium'
-      >{t.nav.blog}</a
-    >
     <a
       href={switcherHref}
       hreflang={otherLang}
