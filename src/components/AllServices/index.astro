@@ -1,0 +1,159 @@
+---
+import Button from "@/composables/buttons/Button.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+/** Images and outbound links are the same in every language. */
+const serviceImages = [
+  "/all-services/web-design.webp",
+  "/all-services/web-development.webp",
+  "/all-services/saas.webp",
+];
+
+const featuredAssets = [
+  {
+    image: "/all-services/projects/indigo.webp",
+    url: "https://www.indigoexportco.com/",
+  },
+  {
+    image: "/all-services/projects/agromig.webp",
+    url: "https://haciendaagromig.com",
+  },
+  {
+    image: "/all-services/projects/primefit.webp",
+    url: "https://www.primefit.coach",
+  },
+];
+
+const delays = ["200", "400", "600"];
+---
+
+<main class='bg-white'>
+  <section class='container mx-auto px-8 py-16 md:py-24'>
+    <div class='max-w-4xl mx-auto text-center'>
+      <h1
+        class='text-4xl md:text-6xl font-bold mb-6'
+        data-aos='fade-up'
+        data-aos-duration='800'
+      >
+        {t.allServices.heading}
+      </h1>
+      <p
+        class='text-xl text-gray-600 mb-12'
+        data-aos='fade-up'
+        data-aos-delay='200'
+        data-aos-duration='800'
+      >
+        {t.allServices.intro}
+      </p>
+    </div>
+
+    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
+      {
+        t.allServices.services.map((service, index) => (
+          <article
+            class='bg-gray-50 rounded-2xl p-8'
+            data-aos='fade-up'
+            data-aos-delay={delays[index]}
+          >
+            <img
+              src={serviceImages[index]}
+              alt={service.imageAlt}
+              width="400"
+              height="192"
+              loading="lazy"
+              decoding="async"
+              class='w-full h-48 object-cover rounded-lg mb-6'
+            />
+            <h2 class='text-2xl font-bold mb-4'>{service.title}</h2>
+            <p class='text-gray-600'>{service.description}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
+      <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
+        {t.allServices.expertiseHeading}
+      </h2>
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {
+          t.allServices.expertise.map((item, index) => (
+            <div
+              class='p-6 bg-white rounded-xl'
+              data-aos='fade-up'
+              data-aos-delay={delays[index]}
+            >
+              <h3 class='text-2xl font-bold mb-4'>{item.title}</h3>
+              <p class='text-gray-600'>{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='mt-24'>
+      <h2
+        class='text-3xl md:text-5xl font-bold text-center mb-16'
+        data-aos='fade-up'
+      >
+        {t.allServices.featuredHeading}
+      </h2>
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {
+          t.allServices.featured.map((project, index) => (
+            <div
+              class='project-card'
+              data-aos='fade-up'
+              data-aos-delay={delays[index]}
+            >
+              <img
+                src={featuredAssets[index].image}
+                alt={project.imageAlt}
+                width="400"
+                height="256"
+                loading="lazy"
+                decoding="async"
+                class='w-full h-64 object-cover rounded-xl mb-6'
+              />
+              <h3 class='text-2xl font-bold mb-4'>{project.title}</h3>
+              <p class='text-gray-600 mb-4'>{project.outcome}</p>
+              <Button
+                link={featuredAssets[index].url}
+                openTab={true}
+                label={t.allServices.visitSite}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='mt-24 bg-gray-50 rounded-3xl p-12' data-aos='fade-up'>
+      <h2 class='text-3xl md:text-5xl font-bold text-center mb-12'>
+        {t.allServices.testimonialsHeading}
+      </h2>
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {
+          t.allServices.testimonials.map((testimonial, index) => (
+            <figure
+              class='bg-white p-8 rounded-xl'
+              data-aos='fade-up'
+              data-aos-delay={delays[index]}
+            >
+              <blockquote class='text-gray-600 mb-6'>
+                “{testimonial.quote}”
+              </blockquote>
+              <figcaption>
+                <span class='font-bold block'>{testimonial.name}</span>
+                <span class='text-gray-500'>{testimonial.company}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+  </section>
+</main>

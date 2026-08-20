@@ -103,6 +103,34 @@ export interface Dictionary {
     message: string;
     button: string;
   };
+  allServices: {
+    title: string;
+    heading: string;
+    intro: string;
+    services: readonly {
+      readonly title: string;
+      readonly description: string;
+      readonly imageAlt: string;
+    }[];
+    expertiseHeading: string;
+    expertise: readonly {
+      readonly title: string;
+      readonly description: string;
+    }[];
+    featuredHeading: string;
+    featured: readonly {
+      readonly title: string;
+      readonly outcome: string;
+      readonly imageAlt: string;
+    }[];
+    visitSite: string;
+    testimonialsHeading: string;
+    testimonials: readonly {
+      readonly quote: string;
+      readonly name: string;
+      readonly company: string;
+    }[];
+  };
 }
 
 export const ui = {
@@ -232,6 +260,90 @@ export const ui = {
       message: "Esta página no existe o cambió de dirección.",
       button: "Volver al inicio",
     },
+    allServices: {
+      title: "Servicios",
+      heading: "Servicios y soluciones digitales",
+      intro:
+        "Desde el diseño de un sitio hasta una plataforma completa: esto es lo que podemos construir contigo.",
+      services: [
+        {
+          title: "Diseño web",
+          description:
+            "Diseño centrado en las personas, que equilibra estética y funcionalidad para que tu sitio se vea bien y se use mejor.",
+          imageAlt: "Boceto de una interfaz web en proceso de diseño",
+        },
+        {
+          title: "Desarrollo web",
+          description:
+            "Sitios construidos a medida con tecnología actual, pensados para cargar rápido y ser fáciles de mantener.",
+          imageAlt: "Código de una página web en un editor",
+        },
+        {
+          title: "Desarrollo SaaS",
+          description:
+            "Plataformas que crecen contigo: arquitectura sólida, gestión de usuarios y seguridad desde el primer día.",
+          imageAlt: "Panel de administración de una plataforma SaaS",
+        },
+      ],
+      expertiseHeading: "En qué somos fuertes",
+      expertise: [
+        {
+          title: "Diseño UI/UX",
+          description:
+            "Interfaces claras y recorridos que la gente entiende sin tener que pensarlo.",
+        },
+        {
+          title: "Accesibilidad",
+          description:
+            "Sitios conformes con WCAG, para que cualquier persona pueda usarlos.",
+        },
+        {
+          title: "Rendimiento",
+          description:
+            "Optimización de carga y respuesta, porque cada segundo cuesta visitas.",
+        },
+      ],
+      featuredHeading: "Proyectos destacados",
+      featured: [
+        {
+          title: "Diseño completo de landing page",
+          outcome: "200% de aumento en interacción de usuarios",
+          imageAlt: "Landing page de Indigo Export Co",
+        },
+        {
+          title: "Rebranding y landing page",
+          outcome: "150% de aumento en la tasa de conversión",
+          imageAlt: "Landing page de Hacienda Agromig",
+        },
+        {
+          title: "Plataforma SaaS",
+          outcome: "150% de crecimiento en suscripciones mensuales",
+          imageAlt: "Plataforma SaaS de PrimeFit",
+        },
+      ],
+      visitSite: "Ver sitio",
+      testimonialsHeading: "Lo que dicen nuestros clientes",
+      testimonials: [
+        {
+          quote:
+            "La landing page mejoró mucho nuestra presencia en línea y aumentó la interacción con clientes en un 80%.",
+          name: "Miledy Molla",
+          company: "Indigo Export Co",
+        },
+        {
+          quote:
+            "Nuestra nueva landing page duplicó la generación de prospectos y mejoró bastante la visibilidad de la marca.",
+          name: "Greivin Carvajal",
+          company: "Hacienda Agromig",
+        },
+        {
+          quote:
+            "La plataforma SaaS de entrenamiento transformó nuestras métricas de rendimiento y redujo el tiempo de control en un 65%.",
+          name: "Christian Ulloa",
+          company: "Cumba's Gym",
+        },
+      ],
+    },
   },
   en: {
     meta: {
@@ -353,6 +465,90 @@ export const ui = {
       title: "404 — Page not found",
       message: "This page doesn't exist, or it moved somewhere else.",
       button: "Return home",
+    },
+    allServices: {
+      title: "Services",
+      heading: "Digital services and solutions",
+      intro:
+        "From designing a single site to building a full platform: this is what we can build with you.",
+      services: [
+        {
+          title: "Web Design",
+          description:
+            "People-first design that balances looks and function, so your site reads well and works better.",
+          imageAlt: "Sketch of a web interface being designed",
+        },
+        {
+          title: "Web Development",
+          description:
+            "Custom-built sites on current technology, made to load fast and stay easy to maintain.",
+          imageAlt: "Web page code in an editor",
+        },
+        {
+          title: "SaaS Development",
+          description:
+            "Platforms that grow with you: solid architecture, user management, and security from day one.",
+          imageAlt: "Admin dashboard of a SaaS platform",
+        },
+      ],
+      expertiseHeading: "What we're good at",
+      expertise: [
+        {
+          title: "UI/UX Design",
+          description:
+            "Clear interfaces and journeys people understand without having to think about them.",
+        },
+        {
+          title: "Accessibility",
+          description:
+            "WCAG-compliant sites, so anyone can use what we build.",
+        },
+        {
+          title: "Performance",
+          description:
+            "Load and response times tuned, because every second costs visits.",
+        },
+      ],
+      featuredHeading: "Featured projects",
+      featured: [
+        {
+          title: "Complete landing page design",
+          outcome: "200% increase in user engagement",
+          imageAlt: "Indigo Export Co landing page",
+        },
+        {
+          title: "Rebranding and landing page",
+          outcome: "150% increase in conversion rate",
+          imageAlt: "Hacienda Agromig landing page",
+        },
+        {
+          title: "SaaS platform",
+          outcome: "150% growth in monthly subscriptions",
+          imageAlt: "PrimeFit SaaS platform",
+        },
+      ],
+      visitSite: "Visit site",
+      testimonialsHeading: "What our clients say",
+      testimonials: [
+        {
+          quote:
+            "The landing page significantly improved our online presence and increased customer engagement by 80%.",
+          name: "Miledy Molla",
+          company: "Indigo Export Co",
+        },
+        {
+          quote:
+            "Our new landing page doubled our lead generation and improved our brand visibility substantially.",
+          name: "Greivin Carvajal",
+          company: "Hacienda Agromig",
+        },
+        {
+          quote:
+            "The training SaaS platform has transformed our performance metrics and reduced control time investment by 65%.",
+          name: "Christian Ulloa",
+          company: "Cumba's Gym",
+        },
+      ],
     },
   },
 } as const satisfies Record<Lang, Dictionary>;
