@@ -61,6 +61,18 @@ export interface Dictionary {
       }
     >;
   };
+  about: {
+    eyebrow: string;
+    heading: string;
+    /** Contains a {year} token replaced with the founding year. */
+    body: string;
+    imageAlt: string;
+    linkedin: string;
+    cards: readonly {
+      readonly title: string;
+      readonly body: string;
+    }[];
+  };
   contact: {
     heading: string;
     name: string;
@@ -172,6 +184,23 @@ export const ui = {
         },
       },
     },
+    about: {
+      eyebrow: "Quiénes somos",
+      heading: "Hola, soy Diego.",
+      body: "Soy Diego Carvajal, desarrollador y fundador de Qora. Desde {year} diseño y construyo productos digitales: primero sitios web para negocios locales, y hoy también productos propios como PrimeFit (gestión para gimnasios y coaches) y Dask (gestión para academias de baile). Trabajo directo, sin intermediarios: la persona que entiende tu problema es la misma que escribe el código. Si tu negocio necesita un sitio web serio o una herramienta a medida, hablemos.",
+      imageAlt: "Diego Carvajal, fundador de Qora",
+      linkedin: "Ver perfil en LinkedIn",
+      cards: [
+        {
+          title: "Productos propios",
+          body: "PrimeFit y Dask son productos que opero y mantengo. Lo que recomiendo a mis clientes es lo mismo que uso todos los días.",
+        },
+        {
+          title: "De la idea al lanzamiento",
+          body: "Diseño, desarrollo, publicación y mantenimiento. Un solo responsable durante todo el proyecto.",
+        },
+      ],
+    },
     contact: {
       heading: "Hablemos de tu proyecto",
       name: "Nombre",
@@ -276,6 +305,23 @@ export const ui = {
           cta: "Visit getdask.com",
         },
       },
+    },
+    about: {
+      eyebrow: "About",
+      heading: "Hi, I'm Diego.",
+      body: "I'm Diego Carvajal, developer and founder of Qora. Since {year} I've been designing and building digital products: first websites for local businesses, and now also my own products, PrimeFit (management for gyms and coaches) and Dask (management for dance academies). You work directly with me: the person who understands your problem is the same one writing the code. If your business needs a serious website or a custom tool, let's talk.",
+      imageAlt: "Diego Carvajal, founder of Qora",
+      linkedin: "View LinkedIn profile",
+      cards: [
+        {
+          title: "Products I run",
+          body: "PrimeFit and Dask are products I operate and maintain. What I recommend to clients is what I use every day.",
+        },
+        {
+          title: "From idea to launch",
+          body: "Design, development, deployment, and maintenance. One person accountable for the whole project.",
+        },
+      ],
     },
     contact: {
       heading: "Tell us about your project",
