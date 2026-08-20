@@ -5,9 +5,17 @@ interface Props {
   description: string;
   img: string;
   link: string;
+  linkLabel?: string;
 }
 
-const { category, title, description, img, link } = Astro.props;
+const {
+  category,
+  title,
+  description,
+  img,
+  link,
+  linkLabel = "Go to",
+} = Astro.props;
 ---
 
 <div class="relative overflow-hidden group w-full max-w-[416px] mx-auto">
@@ -48,7 +56,7 @@ const { category, title, description, img, link } = Astro.props;
       href={link}
       class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-secondary text-secondary-foreground rounded-full border flex items-center justify-center bg-white hover:bg-black hover:text-white hover:rotate-[-45deg] transition-all duration-300"
     >
-      <span class="sr-only">Go to {title}</span>
+      <span class="sr-only">{linkLabel} {title}</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"

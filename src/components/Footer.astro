@@ -1,5 +1,9 @@
 ---
 import FooterBar from "@/components/FooterBar.astro";
+import { getLang, localizePath, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
 <FooterBar>
@@ -8,15 +12,14 @@ import FooterBar from "@/components/FooterBar.astro";
       class='flex flex-col items-center justify-center mt-18 px-4 text-center'
     >
       <p class='mb-8 text-gray-400 text-base sm:text-lg md:text-xl'>
-        Transform your ideas into powerful digital experiences with our expert
-        development team.
+        {t.footer.tagline}
       </p>
       <h2 class='text-4xl sm:text-5xl md:text-7xl font-bold'>
         <a
-          href='/#contact'
+          href={`${localizePath("/", lang)}#contact`}
           class='hover:text-gray-300 transition-colors duration-300'
         >
-          Let's Work Together
+          {t.footer.cta}
         </a>
       </h2>
     </div>

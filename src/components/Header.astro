@@ -1,11 +1,57 @@
+---
+import type { Lang } from "@/i18n/ui";
+import {
+  alternatePath,
+  getLang,
+  localizePath,
+  useTranslations,
+} from "@/i18n/utils";
+
+interface Props {
+  lang?: Lang;
+  /** False when this page has no counterpart in the other language. */
+  hasAlternate?: boolean;
+}
+
+const { lang = getLang(Astro.currentLocale), hasAlternate = true } = Astro.props;
+const t = useTranslations(lang);
+
+const otherLang: Lang = lang === "es" ? "en" : "es";
+const homePath = localizePath("/", lang);
+const onHome = Astro.url.pathname === homePath;
+
+/** Hash links stay in-page on the home page and jump back to it elsewhere. */
+const section = (id: string) => (onHome ? `#${id}` : `${homePath}#${id}`);
+
+const navItems = [
+  { href: onHome ? "#hero" : homePath, label: t.nav.home },
+  { href: section("services"), label: t.nav.services },
+  { href: section("projects"), label: t.nav.projects },
+  { href: section("about"), label: t.nav.about },
+  { href: section("contact"), label: t.nav.contact },
+];
+
+const switcherHref = hasAlternate
+  ? alternatePath(Astro.url.pathname, otherLang)
+  : localizePath("/", otherLang);
+
+const navLinkClass =
+  "text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4";
+---
+
 <header
   class='fixed top-0 left-0 right-0 bg-white z-40 flex justify-between items-center py-4 px-6 md:px-8 shadow-sm'
 >
-  <span class='font-semibold text-2xl sm:text-3xl'><a href="/">Qora.dev</a></span>
+  <span class='font-semibold text-2xl sm:text-3xl'
+    ><a href={homePath}>Qora.dev</a></span
+  >
 
   <button
     id='menu-toggle'
     class='lg:hidden focus:outline-none hover:opacity-75 transition-opacity'
+    aria-label={t.nav.openMenu}
+    aria-controls='mobile-menu'
+    aria-expanded='false'
   >
     <svg
       class='w-7 h-7'
@@ -13,6 +59,7 @@
       stroke='currentColor'
       viewBox='0 0 24 24'
       xmlns='http://www.w3.org/2000/svg'
+      aria-hidden='true'
     >
       <path
         stroke-linecap='round'
@@ -28,6 +75,7 @@
     <button
       id='close-menu'
       class='absolute top-6 right-6 lg:hidden focus:outline-none hover:opacity-75 transition-opacity'
+      aria-label={t.nav.closeMenu}
     >
       <svg
         class='w-7 h-7'
@@ -35,6 +83,7 @@
         stroke='currentColor'
         viewBox='0 0 24 24'
         xmlns='http://www.w3.org/2000/svg'
+        aria-hidden='true'
       >
         <path
           stroke-linecap='round'
@@ -44,30 +93,35 @@
       </svg>
     </button>
 
-    {Astro.url.pathname === '/' ? (
-      <a href='#hero' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Home</a>
-      <a href='#services' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Services</a>
-      <a href='#projects' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Projects</a>
-      <a href='#about' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>About</a>
-      <a href='#contact' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Contact us</a>
-    ) : (
-      <a href='/' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Home</a>
-      <a href='/#services' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Services</a>
-      <a href='/#projects' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Projects</a>
-      <a href='/#about' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>About</a>
-      <a href='/#contact' class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4'>Contact us</a>
-    )}
+    {navItems.map((item) => <a href={item.href} class={navLinkClass}>{item.label}</a>)}
+
+    <a
+      href={switcherHref}
+      hreflang={otherLang}
+      aria-label={t.nav.switchLanguage}
+      class='text-2xl font-medium hover:text-gray-600 transition-colors lg:text-base lg:mx-4 lg:hidden uppercase'
+      >{otherLang}</a
+    >
   </nav>
 
-  <div>
-
-    <a href='/blog'
-    class='hidden lg:inline-block text-black px-5 py-2.5 hover:bg-gray-800 hover:text-white transition-colors rounded-md font-medium'
-    >Blog</a
+  <div class='flex items-center gap-1'>
+    <!-- The blog is English-only and lives at the root, so it is not localized. -->
+    <a
+      href='/blog'
+      class='hidden lg:inline-block text-black px-5 py-2.5 hover:bg-gray-800 hover:text-white transition-colors rounded-md font-medium'
+      >{t.nav.blog}</a
     >
-    <a href={Astro.url.pathname === '/' ? '#contact' : '/#contact'}
-    class='hidden lg:inline-block bg-black text-white px-5 py-2.5 hover:bg-gray-800 transition-colors rounded-md font-medium'
-    >Let's Talk</a
+    <a
+      href={switcherHref}
+      hreflang={otherLang}
+      aria-label={t.nav.switchLanguage}
+      class='hidden lg:inline-block text-black px-3 py-2.5 hover:bg-gray-800 hover:text-white transition-colors rounded-md font-medium uppercase'
+      >{otherLang}</a
+    >
+    <a
+      href={section("contact")}
+      class='hidden lg:inline-block bg-black text-white px-5 py-2.5 hover:bg-gray-800 transition-colors rounded-md font-medium'
+      >{t.nav.cta}</a
     >
   </div>
 </header>

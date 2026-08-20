@@ -9,32 +9,36 @@ export function initMenu() {
     return;
   }
 
-  menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    mobileMenu.classList.toggle("flex");
-    mobileMenu.classList.toggle("flex-col");
-  });
+  const open = () => {
+    mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.add("flex", "flex-col");
+    menuToggle.setAttribute("aria-expanded", "true");
+  };
 
-  closeMenu.addEventListener("click", () => {
+  const close = () => {
     mobileMenu.classList.add("hidden");
     mobileMenu.classList.remove("flex", "flex-col");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
+
+  menuToggle.addEventListener("click", () => {
+    if (mobileMenu.classList.contains("hidden")) open();
+    else close();
   });
 
+  closeMenu.addEventListener("click", close);
+
   mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-      mobileMenu.classList.remove("flex", "flex-col");
-    });
+    link.addEventListener("click", close);
   });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 1024) {
-      mobileMenu.classList.remove("hidden");
-      mobileMenu.classList.remove("flex-col");
+      mobileMenu.classList.remove("hidden", "flex-col");
       mobileMenu.classList.add("flex");
+      menuToggle.setAttribute("aria-expanded", "false");
     } else {
-      mobileMenu.classList.add("hidden");
-      mobileMenu.classList.remove("flex", "flex-col");
+      close();
     }
   });
 }

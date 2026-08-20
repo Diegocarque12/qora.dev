@@ -1,5 +1,9 @@
 ---
 import Button from "@/composables/buttons/Button.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -12,18 +16,18 @@ import Button from "@/composables/buttons/Button.astro";
         class="block text-lg sm:text-xl"
         data-aos="fade-down"
         data-aos-duration="800"
-        >Creative <span
+        >{t.hero.lead} <span
           class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold"
           data-aos="zoom-in"
           data-aos-duration="1200"
-          data-aos-delay="400">Digital</span
+          data-aos-delay="400">{t.hero.display}</span
         ></span
       >
       <span
         class="agency-text text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold ml-8 sm:ml-16 md:ml-24 lg:ml-44"
         data-aos="fade-left"
         data-aos-duration="1000"
-        data-aos-delay="800">Agency</span
+        data-aos-delay="800">{t.hero.accent}</span
       >
     </h1>
     <p
@@ -32,41 +36,27 @@ import Button from "@/composables/buttons/Button.astro";
       data-aos-delay="1200"
       data-aos-duration="1000"
     >
-      At Onnat we specialize in transforming your digital vision into reality.
-      Our team of creative experts is dedicated to crafting innovative digital
-      solutions.
+      {t.hero.paragraph}
     </p>
 
     <div data-aos="zoom-in" data-aos-delay="1400" data-aos-duration="800">
-      <Button />
+      <Button label={t.hero.button} />
     </div>
     <div
       class="services flex flex-wrap justify-center gap-3 sm:gap-4 mt-16 sm:mt-12 lg:mt-28 lg:mb-16"
     >
-      <div
-        class="flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base"
-        data-aos="fade-up"
-        data-aos-delay="600"
-        data-aos-duration="600"
-      >
-        UI/UX Design
-      </div>
-      <div
-        class="flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base"
-        data-aos="fade-up"
-        data-aos-delay="600"
-        data-aos-duration="600"
-      >
-        Search Engine Optimization (SEO)
-      </div>
-      <div
-        class="flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base"
-        data-aos="fade-up"
-        data-aos-delay="600"
-        data-aos-duration="600"
-      >
-        Development
-      </div>
+      {
+        t.hero.pills.map((pill) => (
+          <div
+            class="flex items-center lg:text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full border-gray-200 border-2 hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base"
+            data-aos="fade-up"
+            data-aos-delay="600"
+            data-aos-duration="600"
+          >
+            {pill}
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

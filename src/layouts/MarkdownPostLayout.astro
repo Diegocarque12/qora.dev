@@ -12,7 +12,12 @@ const formatDate = (date: string) => {
 };
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  lang='en'
+  alternates={false}
+>
   <article
     class="max-w-prose mx-auto px-4 py-8 md:px-0 font-system leading-relaxed text-gray-900"
   >

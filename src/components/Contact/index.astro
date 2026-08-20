@@ -1,5 +1,9 @@
 ---
+import { getLang, useTranslations } from "@/i18n/utils";
+
 const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -12,23 +16,26 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
     action="https://api.web3forms.com/submit"
     method="POST"
     class="bg-black/90 px-4 sm:px-6 md:px-8 lg:pl-60 lg:pr-20 py-12 md:py-16 lg:py-20 w-full lg:max-w-[55%] flex flex-col"
+    data-success={t.contact.success}
+    data-error={t.contact.error}
+    data-network-error={t.contact.networkError}
   >
     <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
     <h2
       class="text-white text-2xl md:text-3xl font-extrabold mb-8 md:mb-16 text-left"
     >
-      Contact Us
+      {t.contact.heading}
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       <div class="mb-6">
         <label for="name" class="block text-sm font-medium text-white mb-2"
-          >Name</label
+          >{t.contact.name}</label
         >
         <input
           type="text"
           id="name"
           name="name"
-          placeholder="Enter Your Name"
+          placeholder={t.contact.namePlaceholder}
           class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
           autocomplete="off"
@@ -36,13 +43,13 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
       </div>
       <div class="mb-6">
         <label for="lastName" class="block text-sm font-medium text-white mb-2"
-          >Last Name</label
+          >{t.contact.lastName}</label
         >
         <input
           type="text"
           id="lastName"
           name="lastName"
-          placeholder="Enter Your Last Name"
+          placeholder={t.contact.lastNamePlaceholder}
           class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
           autocomplete="off"
@@ -50,13 +57,13 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
       </div>
       <div class="mb-6">
         <label for="email" class="block text-sm font-medium text-white mb-2"
-          >Email</label
+          >{t.contact.email}</label
         >
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="Enter Your Email"
+          placeholder={t.contact.emailPlaceholder}
           class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           required
           autocomplete="off"
@@ -64,13 +71,16 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
       </div>
       <div class="mb-6">
         <label for="phone" class="block text-sm font-medium text-white mb-2"
-          >Phone</label
+          >{t.contact.phone}
+          <span class="text-[#8a8f8a] font-normal"
+            >({t.contact.phoneOptional})</span
+          ></label
         >
         <input
           type="tel"
           id="phone"
           name="phone"
-          placeholder="Enter Your Phone Number"
+          placeholder={t.contact.phonePlaceholder}
           class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
           autocomplete="off"
         />
@@ -78,13 +88,13 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
     </div>
     <div class="mb-6">
       <label for="message" class="block text-sm font-medium text-white mb-2"
-        >Message</label
+        >{t.contact.message}</label
       >
       <textarea
         id="message"
         name="message"
         rows="4"
-        placeholder="Enter Your Message"
+        placeholder={t.contact.messagePlaceholder}
         class="w-full pr-4 py-2 bg-transparent text-white border-b-2 border-[#464946] placeholder-[#464946] focus:placeholder-transparent focus:outline-none"
         required
         autocomplete="off"></textarea>
@@ -94,7 +104,7 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
         type="submit"
         class="w-full sm:w-auto px-6 py-3 bg-black text-white font-medium hover:bg-white hover:text-black border border-black transition-colors duration-300 focus:outline-none"
       >
-        Submit Now
+        {t.contact.submit}
       </button>
     </div>
 
@@ -128,19 +138,17 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
         if (data.success) {
           notification.className =
             "mt-4 p-4 text-center rounded bg-green-100 text-green-700";
-          notificationText.textContent = "Message sent successfully!";
+          notificationText.textContent = form.dataset.success ?? "";
           form.reset();
         } else {
           notification.className =
             "mt-4 p-4 text-center rounded bg-red-100 text-red-700";
-          notificationText.textContent =
-            "Something went wrong. Please try again.";
+          notificationText.textContent = form.dataset.error ?? "";
         }
       } catch (error) {
         notification.className =
           "mt-4 p-4 text-center rounded bg-red-100 text-red-700";
-        notificationText.textContent =
-          "Error sending message. Please try again.";
+        notificationText.textContent = form.dataset.networkError ?? "";
       }
 
       // Hide notification after 5 seconds

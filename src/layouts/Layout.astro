@@ -2,6 +2,8 @@
 import "@fontsource-variable/onest";
 import Header from "@/components/Header.astro";
 import { SITE } from "@/config/site";
+import type { Lang } from "@/i18n/ui";
+import { alternatePath, getLang, useTranslations } from "@/i18n/utils";
 
 interface Props {
   /** Page name without the brand; the layout appends it once. */
@@ -9,26 +11,39 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  /** Overrides the locale for pages served outside the localized tree. */
+  lang?: Lang;
+  /** Set false on pages that have no counterpart in the other language. */
+  alternates?: boolean;
 }
-
-const DEFAULT_TITLE = "Qora — Custom Web & SaaS Development";
-const DEFAULT_DESCRIPTION =
-  "Web development studio. We build custom SaaS products and websites — like PrimeFit and Dask — for businesses that want to run better online.";
 
 const {
   title,
-  description = DEFAULT_DESCRIPTION,
+  description,
   ogImage = SITE.ogImage ?? undefined,
   noindex = false,
+  lang = getLang(Astro.currentLocale),
+  alternates = true,
 } = Astro.props;
 
-const pageTitle = title ? `${title} — ${SITE.name}` : DEFAULT_TITLE;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url);
-const shareImage = ogImage ? new URL(ogImage, Astro.site ?? SITE.url) : null;
+const t = useTranslations(lang);
+
+const pageTitle = title ? `${title} — ${SITE.name}` : t.meta.defaultTitle;
+const base = Astro.site ?? SITE.url;
+const canonical = new URL(Astro.url.pathname, base);
+const shareImage = ogImage ? new URL(ogImage, base) : null;
+
+const alternateLinks = alternates
+  ? [
+      { hreflang: "es", href: new URL(alternatePath(Astro.url.pathname, "es"), base) },
+      { hreflang: "en", href: new URL(alternatePath(Astro.url.pathname, "en"), base) },
+      { hreflang: "x-default", href: new URL(alternatePath(Astro.url.pathname, "es"), base) },
+    ]
+  : [];
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang={lang}>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
@@ -36,17 +51,23 @@ const shareImage = ogImage ? new URL(ogImage, Astro.site ?? SITE.url) : null;
     <meta name='generator' content={Astro.generator} />
 
     <title>{pageTitle}</title>
-    <meta name='description' content={description} />
+    <meta name='description' content={description ?? t.meta.description} />
     <meta name='author' content={SITE.author} />
     <link rel='canonical' href={canonical} />
     <link rel='sitemap' href='/sitemap-index.xml' />
     {noindex && <meta name='robots' content='noindex, nofollow' />}
+    {
+      alternateLinks.map((alt) => (
+        <link rel='alternate' hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
 
     <meta property='og:type' content='website' />
     <meta property='og:site_name' content={SITE.name} />
+    <meta property='og:locale' content={lang === "es" ? "es_ES" : "en_US"} />
     <meta property='og:url' content={canonical} />
     <meta property='og:title' content={pageTitle} />
-    <meta property='og:description' content={description} />
+    <meta property='og:description' content={description ?? t.meta.description} />
     {shareImage && <meta property='og:image' content={shareImage} />}
 
     <meta
@@ -54,7 +75,10 @@ const shareImage = ogImage ? new URL(ogImage, Astro.site ?? SITE.url) : null;
       content={shareImage ? "summary_large_image" : "summary"}
     />
     <meta name='twitter:title' content={pageTitle} />
-    <meta name='twitter:description' content={description} />
+    <meta
+      name='twitter:description'
+      content={description ?? t.meta.description}
+    />
     {shareImage && <meta name='twitter:image' content={shareImage} />}
 
     <link
@@ -65,7 +89,7 @@ const shareImage = ogImage ? new URL(ogImage, Astro.site ?? SITE.url) : null;
     />
   </head>
   <body>
-    <Header />
+    <Header lang={lang} hasAlternate={alternates} />
     <slot />
     <script is:inline src='https://unpkg.com/aos@next/dist/aos.js'></script>
     <script is:inline>

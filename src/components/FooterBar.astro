@@ -1,7 +1,16 @@
 ---
 import "@fontsource-variable/onest";
+import { SITE } from "@/config/site";
+import { getLang, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 
 const currentYear = new Date().getFullYear();
+const years =
+  currentYear > SITE.foundingYear
+    ? `${SITE.foundingYear}–${currentYear}`
+    : `${SITE.foundingYear}`;
 ---
 
 <footer
@@ -11,12 +20,14 @@ const currentYear = new Date().getFullYear();
   <section class='flex gap-3 items-center mb-4'>
     <div class='text-center sm:text-left'>
       <span class='text-sm sm:text-base'
-        >© 2023-{currentYear} All rights for Qora exclusive</span
+        >© {years} {SITE.name}. {t.footer.copyright}</span
       >
     </div>
     <div class='flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4'>
       <a
-        href='https://www.instagram.com/qora.dev_/'
+        href={SITE.social.instagram}
+        target='_blank'
+        rel='noopener noreferrer'
         class='flex items-center text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors duration-300 border-gray-800 border-2'
       >
         <svg
@@ -32,7 +43,9 @@ const currentYear = new Date().getFullYear();
         Instagram
       </a>
       <a
-        href='https://www.linkedin.com/in/luis-diego-carvajal/'
+        href={SITE.social.linkedin}
+        target='_blank'
+        rel='noopener noreferrer'
         class='flex items-center text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors duration-300 border-gray-800 border-2'
       >
         <svg
@@ -51,12 +64,13 @@ const currentYear = new Date().getFullYear();
     <div
       class='text-xs sm:text-sm text-gray-400 flex flex-col sm:flex-row items-center justify-center'
     >
+      <!-- Legal pages are not translated yet and are served from the root. -->
       <a href='/terms' class='hover:text-white transition-colors duration-300'
-        >Terms of Service</a
+        >{t.footer.terms}</a
       >
       <span class='mx-2 hidden sm:inline'>|</span>
       <a href='/privacy' class='hover:text-white transition-colors duration-300'
-        >Privacy Policy</a
+        >{t.footer.privacy}</a
       >
     </div>
   </section>
