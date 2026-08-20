@@ -48,6 +48,7 @@ export interface Dictionary {
     heading: string;
     intro: string;
     viewAll: string;
+    readCase: string;
     outcomeLabel: string;
     cases: Record<
       CaseStudyId,
@@ -57,6 +58,36 @@ export interface Dictionary {
         readonly forWhom: string;
         readonly outcome?: string;
         readonly cta: string;
+      }
+    >;
+  };
+  caseStudy: {
+    eyebrow: string;
+    backLabel: string;
+    storyHeading: string;
+    processHeading: string;
+    /** Prefix for gallery image alt text; the product name follows it. */
+    galleryAlt: string;
+    visionHeading: string;
+    differenceHeading: string;
+    ctaHeading: string;
+    ctaBody: string;
+    ctaButton: string;
+    nextCaseLabel: string;
+    cases: Record<
+      CaseStudyId,
+      {
+        readonly title: string;
+        readonly metaDescription: string;
+        readonly tagline: string;
+        readonly intro: string;
+        readonly story: readonly string[];
+        readonly process: readonly string[];
+        readonly vision: readonly string[];
+        readonly difference: readonly {
+          readonly title: string;
+          readonly body: string;
+        }[];
       }
     >;
   };
@@ -188,6 +219,7 @@ export const ui = {
       intro:
         "No son maquetas ni conceptos: son plataformas en producción, con clientes reales usándolas todos los días.",
       viewAll: "Ver más",
+      readCase: "Ver el caso completo",
       outcomeLabel: "Resultado",
       cases: {
         primefit: {
@@ -207,6 +239,88 @@ export const ui = {
           forWhom:
             "Para academias que hoy llevan la operación en hojas de cálculo y chats, y necesitan orden sin complicarse.",
           cta: "Ver getdask.com",
+        },
+      },
+    },
+    caseStudy: {
+      eyebrow: "Caso de estudio",
+      backLabel: "Volver a proyectos",
+      storyHeading: "La historia",
+      processHeading: "El proceso",
+      galleryAlt: "Captura de",
+      visionHeading: "Nuestra visión",
+      differenceHeading: "Qué lo hace diferente",
+      ctaHeading: "¿Tu negocio necesita algo así?",
+      ctaBody:
+        "Construimos herramientas a la medida de problemas reales. Cuéntanos el tuyo y te decimos con honestidad si podemos ayudarte.",
+      ctaButton: "Hablemos",
+      nextCaseLabel: "Siguiente proyecto",
+      cases: {
+        primefit: {
+          title: "Caso de estudio: PrimeFit",
+          metaDescription:
+            "La historia detrás de PrimeFit, la plataforma de gestión para gimnasios y entrenadores que construimos y operamos: el problema, el proceso y la visión.",
+          tagline: "Inteligencia deportiva para gimnasios y entrenadores",
+          intro:
+            "PrimeFit es un producto propio de Qora: la plataforma donde entrenadores y gimnasios centralizan rutinas, seguimiento de clientes y membresías para dedicar su tiempo a entrenar, no a administrar.",
+          story: [
+            "PrimeFit no empezó como un encargo: empezó como un problema que veíamos repetirse en gimnasios y entrenadores independientes. El coach domina el entrenamiento, pero la operación vive regada entre hojas de cálculo, PDFs estáticos y chats: rutinas que se pierden, clientes que se estancan sin que nadie lo note y horas de administración que deberían estar en el piso del gimnasio.",
+            "El costo real de ese desorden es la retención: un miembro que se siente ignorado no reclama — simplemente deja de llegar. Construimos la herramienta que ataca ese problema de raíz, en español y pensada para cómo trabaja un coach en Latinoamérica.",
+          ],
+          process: [
+            "Empezamos por el flujo esencial: que un entrenador cree una rutina maestra y la asigne a decenas de clientes en segundos, y que cada cliente reciba su plan en el teléfono y registre sus entrenos en tiempo real. Sobre esa base construimos el resto: análisis de progreso con mapas corporales y gráficas de volumen, manejo de membresías y un radar de retención que avisa cuando alguien lleva días sin entrenar.",
+            "Hoy la plataforma acumula más de 10 000 series registradas y más de 500 clientes activos, y la operamos como producto vivo: cada versión se publica, se mide con uso real y se corrige. Ese ciclo corto — idea, código, feedback — es el mismo que aplicamos a los proyectos de nuestros clientes.",
+          ],
+          vision: [
+            "Queremos que un entrenador independiente pueda operar como un negocio serio sin contratar administración: que sepa quién está a punto de abandonar antes de que pase, que demuestre con datos el valor de su programación y que su marca se vea profesional frente a cada cliente. Hacia allá sigue creciendo PrimeFit.",
+          ],
+          difference: [
+            {
+              title: "Producto propio, no un encargo",
+              body: "PrimeFit es nuestro: lo usamos, lo operamos y respondemos por él todos los días. Esa exigencia — vivir con las consecuencias de cada decisión técnica — no la da un proveedor externo.",
+            },
+            {
+              title: "De principio a fin",
+              body: "Diseño, desarrollo, infraestructura y soporte salen del mismo lugar. No hay traducción entre quien entiende el problema del coach y quien escribe el código.",
+            },
+            {
+              title: "Hecho para la región",
+              body: "En español desde el primer día y pensado para la forma real de trabajar de coaches y gimnasios latinoamericanos, no una traducción de un producto de otro mercado.",
+            },
+          ],
+        },
+        dask: {
+          title: "Caso de estudio: Dask",
+          metaDescription:
+            "La historia detrás de Dask, el software de gestión para academias de baile que construimos y operamos: el problema, el proceso y la visión.",
+          tagline: "Gestión con total claridad para academias de baile",
+          intro:
+            "Dask es un producto propio de Qora: la plataforma donde una academia de baile administra inscripciones, cobros y comunicación con sus estudiantes — y además obtiene su propio sitio público con su dominio y sus colores.",
+          story: [
+            "Las academias de baile son negocios de personas: grupos que cambian, estudiantes que entran y salen, mensualidades que hay que perseguir. Casi todas llevan esa operación en hojas de cálculo y chats — con comprobantes de pago perdidos en WhatsApp — y el costo es silencioso: horas de administración, pagos que se traspapelan y cobros incómodos que desgastan la relación con el estudiante.",
+            "Dask nace de una convicción simple: enseñar a bailar es el talento de la academia; cobrar y administrar no deberían robarle el tiempo. Así que construimos el sistema alrededor de cómo funciona una academia real, no un software genérico de clases forzado a ese mundo.",
+          ],
+          process: [
+            "Empezamos por el dinero, que es donde más duele: cada pago queda registrado y verificado — efectivo, transferencia o SINPE con comprobante — con estados claros y un panel donde se ve de un vistazo quién está al día y quién debe. Alrededor construimos el control de acceso, donde la academia decide quién entra, y paneles separados para administración y estudiantes.",
+            "Después llevamos Dask más allá de la gestión: cada academia — y también cada instructor independiente — obtiene su propio sitio público en su subdominio, con plantillas diseñadas para el mundo del baile, reserva de clases y su identidad visual. La administración y la presencia en línea dejan de ser dos sistemas separados.",
+          ],
+          vision: [
+            "Queremos devolverle tiempo a la gente que enseña: que dirigir una academia no exija ser también administrador de tiempo completo. La meta es que cualquier academia opere con el orden de un negocio grande — pagos claros, datos al día, presencia profesional en línea — sin perder la cercanía que la hace especial.",
+          ],
+          difference: [
+            {
+              title: "Producto propio",
+              body: "Dask es nuestro y lo operamos nosotros. Cuando una academia necesita algo, no hay tickets con un proveedor: la mejora sale del mismo equipo que construyó el sistema.",
+            },
+            {
+              title: "A la medida del problema",
+              body: "No adaptamos una plantilla genérica: el flujo de una academia — grupos, mensualidades, comprobantes, aprobaciones — está construido desde cero, incluyendo cómo se paga realmente en la región.",
+            },
+            {
+              title: "Gestión y presencia juntas",
+              body: "El panel interno y el sitio público de la academia salen de la misma plataforma y del mismo responsable, del primer boceto al soporte.",
+            },
+          ],
         },
       },
     },
@@ -394,6 +508,7 @@ export const ui = {
       intro:
         "Not mockups or concepts: these are platforms in production, with real customers using them every day.",
       viewAll: "See more",
+      readCase: "Read the full case",
       outcomeLabel: "Outcome",
       cases: {
         primefit: {
@@ -412,6 +527,88 @@ export const ui = {
           forWhom:
             "For academies running their operations on spreadsheets and chat threads, who need order without overhead.",
           cta: "Visit getdask.com",
+        },
+      },
+    },
+    caseStudy: {
+      eyebrow: "Case study",
+      backLabel: "Back to projects",
+      storyHeading: "The story",
+      processHeading: "The process",
+      galleryAlt: "Screenshot of",
+      visionHeading: "Our vision",
+      differenceHeading: "What makes it different",
+      ctaHeading: "Need something like this for your business?",
+      ctaBody:
+        "We build tools shaped around real problems. Tell us about yours and we'll tell you, honestly, whether we can help.",
+      ctaButton: "Let's talk",
+      nextCaseLabel: "Next project",
+      cases: {
+        primefit: {
+          title: "Case study: PrimeFit",
+          metaDescription:
+            "The story behind PrimeFit, the management platform for gyms and coaches we build and run: the problem, the process, and the vision.",
+          tagline: "Sports intelligence for gyms and coaches",
+          intro:
+            "PrimeFit is Qora's own product: the platform where coaches and gyms centralize training plans, client tracking, and memberships so they can spend their time training people, not running admin.",
+          story: [
+            "PrimeFit didn't start as a client project: it started as a problem we kept seeing in gyms and independent coaches. The coach masters the training, but the operation lives scattered across spreadsheets, static PDFs, and chat threads: routines get lost, clients plateau without anyone noticing, and hours go to admin that should go to the gym floor.",
+            "The real cost of that mess is retention: a member who feels ignored doesn't complain — they just stop showing up. We built the tool that attacks that problem at the root, in Spanish, designed around how coaches in Latin America actually work.",
+          ],
+          process: [
+            "We started with the essential flow: a trainer creates a master routine and assigns it to dozens of clients in seconds, and every client gets their plan on their phone and logs workouts in real time. On that base we built the rest: progress analytics with body heatmaps and volume charts, membership management, and a retention radar that raises an alert when someone hasn't trained for days.",
+            "Today the platform has logged over 10,000 sets across more than 500 active clients, and we run it as a living product: every release ships, gets measured against real usage, and gets corrected. That short loop — idea, code, feedback — is the same one we apply to client projects.",
+          ],
+          vision: [
+            "We want an independent coach to be able to run a serious business without hiring an office: to know who is about to churn before it happens, to prove the value of their programming with data, and to look professional in front of every client. That is the direction PrimeFit keeps growing in.",
+          ],
+          difference: [
+            {
+              title: "Our own product, not a commission",
+              body: "PrimeFit is ours: we use it, we run it, and we answer for it every day. That standard — living with the consequences of every technical decision — is not something an outside vendor carries.",
+            },
+            {
+              title: "End to end",
+              body: "Design, development, infrastructure, and support come from the same place. Nothing gets lost in translation between the person who understands the coach's problem and the person writing the code.",
+            },
+            {
+              title: "Built for the region",
+              body: "In Spanish from day one and designed around how Latin American coaches and gyms actually work — not a translated product from another market.",
+            },
+          ],
+        },
+        dask: {
+          title: "Case study: Dask",
+          metaDescription:
+            "The story behind Dask, the management software for dance academies we build and run: the problem, the process, and the vision.",
+          tagline: "Total clarity for dance academy management",
+          intro:
+            "Dask is Qora's own product: the platform where a dance academy manages enrollment, billing, and student communication — and gets its own public site with its own domain and colors.",
+          story: [
+            "Dance academies are businesses made of people: groups that change, students who come and go, monthly fees that need chasing. Almost all of them run that operation on spreadsheets and chats — payment receipts lost in WhatsApp — and the cost is silent: admin hours, payments that slip through, and awkward collection talks that wear down the relationship with the student.",
+            "Dask was born from a simple conviction: teaching people to dance is the academy's talent; billing and admin shouldn't steal its time. So we built the system around how a real academy works, not a generic class-management tool forced onto that world.",
+          ],
+          process: [
+            "We started with the money, where it hurts most: every payment gets recorded and verified — cash, bank transfer, or SINPE with a receipt — with clear statuses and a panel that shows at a glance who is current and who owes. Around that we built admission control, where the academy decides who gets in, and separate dashboards for admins and students.",
+            "Then we took Dask beyond management: every academy — and every independent instructor — gets its own public site on its own subdomain, with templates designed for the dance world, class booking, and its own visual identity. Administration and online presence stop being two separate systems.",
+          ],
+          vision: [
+            "We want to give time back to the people who teach: running an academy shouldn't require being a full-time administrator too. The goal is for any academy to operate with the order of a big business — clear payments, data up to date, a professional online presence — without losing the closeness that makes it special.",
+          ],
+          difference: [
+            {
+              title: "Our own product",
+              body: "Dask is ours and we run it ourselves. When an academy needs something, there are no tickets with a vendor: the improvement comes from the same team that built the system.",
+            },
+            {
+              title: "Shaped to the problem",
+              body: "We didn't adapt a generic template: an academy's flow — groups, monthly fees, receipts, approvals — is built from scratch, including how people in the region actually pay.",
+            },
+            {
+              title: "Management and presence together",
+              body: "The internal panel and the academy's public site come from the same platform and the same person accountable, from first sketch to support.",
+            },
+          ],
         },
       },
     },

@@ -112,15 +112,34 @@ const t = useTranslations(lang);
               </p>
             )}
 
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-white text-sm font-medium underline-offset-4 hover:underline mt-2"
-            >
-              {copy.cta}
-              <ExternalLink />
-            </a>
+            <div class="mt-2 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href={localizePath(`/projects/${project.id}`, lang)}
+                class="inline-flex items-center gap-2 text-white text-sm font-medium underline-offset-4 hover:underline"
+              >
+                {t.projects.readCase}
+                <svg
+                  width="40"
+                  height="8"
+                  viewBox="0 0 50 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M0.231934 1L48.0951 1L36.0525 9" stroke="currentColor"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-gray-400 text-sm underline-offset-4 hover:underline hover:text-white transition-colors"
+              >
+                {copy.cta}
+                <ExternalLink />
+              </a>
+            </div>
           </article>
         );
       })
