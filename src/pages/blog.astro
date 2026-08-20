@@ -1,5 +1,5 @@
 ---
-import FooterLayout from "@/layouts/FooterLayout.astro";
+import FooterBar from "@/components/FooterBar.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -103,7 +103,7 @@ const formatDate = (date: string) => {
       }
     </section>
   </main>
-  <FooterLayout />
+  <FooterBar />
 </Layout>
 
 <style>
