@@ -25,6 +25,11 @@ export interface ServicePageCopy {
   }[];
   projectsHeading: string;
   projectsIntro: string;
+  processHeading: string;
+  process: readonly {
+    readonly title: string;
+    readonly body: string;
+  }[];
   ctaHeading: string;
   ctaBody: string;
   ctaButton: string;
@@ -524,6 +529,25 @@ export const ui = {
       projectsHeading: "Sitios que hemos construido",
       projectsIntro:
         "Todos están en línea. Visítalos y juzga el trabajo por ti mismo.",
+      processHeading: "Cómo trabajamos",
+      process: [
+        {
+          title: "Entender",
+          body: "Conversamos sobre tu negocio, a quién le vendes y qué necesitas que pase cuando alguien llega a tu sitio.",
+        },
+        {
+          title: "Diseñar",
+          body: "Diseñamos las pantallas y te las mostramos antes de programar. Los cambios se hacen aquí, donde son baratos.",
+        },
+        {
+          title: "Construir",
+          body: "Programamos el sitio a medida, con atención al rendimiento y a que funcione bien en teléfono.",
+        },
+        {
+          title: "Publicar",
+          body: "Probamos en distintos dispositivos, publicamos y quedamos disponibles para los ajustes que aparezcan.",
+        },
+      ],
       ctaHeading: "¿Listo para renovar tu sitio?",
       ctaBody:
         "Cuéntanos qué necesita tu negocio y te decimos con honestidad qué haríamos y cuánto toma.",
@@ -548,15 +572,34 @@ export const ui = {
           imageAlt: "Panel de control de seguridad de una aplicación",
         },
         {
-          title: "Acompañamiento continuo",
+          title: "Bases sólidas",
           description:
-            "El lanzamiento es el comienzo. Seguimos mejorando el producto con el uso real de tu equipo y tus clientes.",
-          imageAlt: "Equipo revisando métricas de uso de una aplicación",
+            "Construimos sobre Supabase y Postgres: autenticación lista, permisos a nivel de fila y respaldos. Tecnología probada, no experimentos.",
+          imageAlt: "Logotipo de Supabase",
         },
       ],
       projectsHeading: "Plataformas que construimos y operamos",
       projectsIntro:
         "Son productos propios: los mantenemos todos los días, con clientes reales usándolos.",
+      processHeading: "Cómo trabajamos",
+      process: [
+        {
+          title: "Entender",
+          body: "Mapeamos cómo funciona hoy tu operación y dónde se pierde el tiempo. Sin eso, cualquier herramienta es un tiro al aire.",
+        },
+        {
+          title: "Construir lo esencial",
+          body: "Empezamos por el flujo que más duele y lo ponemos a funcionar pronto, en vez de desaparecer seis meses.",
+        },
+        {
+          title: "Probar con uso real",
+          body: "Tu equipo usa la herramienta y nos dice qué estorba. Corregimos con datos, no con suposiciones.",
+        },
+        {
+          title: "Operar y crecer",
+          body: "Publicamos, monitoreamos y seguimos añadiendo lo que el negocio vaya necesitando.",
+        },
+      ],
       ctaHeading: "¿Tienes un proceso que da problemas?",
       ctaBody:
         "Si tu operación vive en hojas de cálculo y mensajes sueltos, hay una herramienta esperando a ser construida. Cuéntanos el problema.",
@@ -885,6 +928,25 @@ export const ui = {
       projectsHeading: "Websites we've built",
       projectsIntro:
         "They're all online. Visit them and judge the work for yourself.",
+      processHeading: "How we work",
+      process: [
+        {
+          title: "Understand",
+          body: "We talk through your business, who you sell to, and what should happen when someone lands on your site.",
+        },
+        {
+          title: "Design",
+          body: "We design the screens and show them to you before writing code. Changes happen here, where they're cheap.",
+        },
+        {
+          title: "Build",
+          body: "We build the site to measure, with an eye on performance and on it working properly on a phone.",
+        },
+        {
+          title: "Launch",
+          body: "We test across devices, publish, and stay available for the adjustments that come up.",
+        },
+      ],
       ctaHeading: "Ready to rebuild your site?",
       ctaBody:
         "Tell us what your business needs and we'll tell you honestly what we'd do and how long it takes.",
@@ -909,15 +971,34 @@ export const ui = {
           imageAlt: "Security dashboard of an application",
         },
         {
-          title: "Ongoing partnership",
+          title: "Solid foundations",
           description:
-            "Launch is the beginning. We keep improving the product with real usage from your team and your customers.",
-          imageAlt: "Team reviewing application usage metrics",
+            "We build on Supabase and Postgres: authentication ready, row-level permissions, and backups. Proven technology, not experiments.",
+          imageAlt: "Supabase logo",
         },
       ],
       projectsHeading: "Platforms we build and run",
       projectsIntro:
         "These are our own products: we maintain them every day, with real customers using them.",
+      processHeading: "How we work",
+      process: [
+        {
+          title: "Understand",
+          body: "We map how your operation runs today and where the time goes. Without that, any tool is a shot in the dark.",
+        },
+        {
+          title: "Build the core",
+          body: "We start with the flow that hurts most and get it working early, instead of disappearing for six months.",
+        },
+        {
+          title: "Test with real use",
+          body: "Your team uses the tool and tells us what gets in the way. We fix based on data, not assumptions.",
+        },
+        {
+          title: "Run and grow",
+          body: "We deploy, monitor, and keep adding whatever the business turns out to need.",
+        },
+      ],
       ctaHeading: "Got a process that keeps breaking?",
       ctaBody:
         "If your operation lives in spreadsheets and scattered messages, there's a tool waiting to be built. Tell us about the problem.",

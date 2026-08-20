@@ -1,9 +1,7 @@
 ---
-import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import ExternalLink from "@/assets/icons/ExternalLink.astro";
-import { caseStudies } from "@/config/caseStudies";
-import { featuredSites } from "@/config/featuredSites";
+import { clientSites, ownProducts } from "@/config/portfolio";
 import { getLang, localizePath, useTranslations } from "@/i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
@@ -16,36 +14,8 @@ const serviceImages = [
   "/all-services/saas.webp",
 ];
 
-const siteImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/sites/*.{avif,jpg,jpeg,png,webp}",
-  { eager: true }
-);
-
-const caseImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/projects/*/*.{avif,jpg,jpeg,png,webp}",
-  { eager: true }
-);
-
-/** A case study's cover is the first image of its gallery, by file name. */
-function caseCover(id: string): ImageMetadata | undefined {
-  const [first] = Object.entries(caseImages)
-    .filter(([path]) => path.includes(`/projects/${id}/`))
-    .sort(([a], [b]) => a.localeCompare(b));
-  return first?.[1].default;
-}
-
-const products = caseStudies.map((study) => ({
-  ...study,
-  copy: t.projects.cases[study.id],
-  cover: caseCover(study.id),
-  href: localizePath(`/projects/${study.id}`, lang),
-}));
-
-const sites = featuredSites.map((site) => ({
-  ...site,
-  copy: t.allServices.sites[site.id],
-  cover: siteImages[`/src/assets/sites/${site.id}.webp`]?.default,
-}));
+const products = ownProducts(t, lang);
+const sites = clientSites(t);
 
 const homePath = localizePath("/", lang);
 const delays = ["0", "150", "300"];
@@ -190,10 +160,10 @@ const externalLinkClass =
               data-aos='fade-up'
               data-aos-delay={delays[index]}
             >
-              {product.cover && (
+              {product.image && (
                 <Image
-                  src={product.cover}
-                  alt={product.copy.tag}
+                  src={product.image}
+                  alt={product.imageAlt}
                   widths={[480, 800]}
                   sizes='(min-width: 1024px) 50vw, 100vw'
                   class='w-full h-56 sm:h-72 object-cover object-top border-b border-white/15'
@@ -202,21 +172,21 @@ const externalLinkClass =
               )}
               <div class='flex flex-col gap-3 p-6 sm:p-8'>
                 <span class='text-xs uppercase tracking-wide text-gray-400'>
-                  {product.copy.tag}
+                  {product.tag}
                 </span>
                 <h4 class='text-2xl sm:text-3xl font-bold'>{product.name}</h4>
-                <p class='text-sm text-gray-300'>{product.copy.whatItIs}</p>
-                {product.copy.outcome && (
+                <p class='text-sm text-gray-300'>{product.description}</p>
+                {product.outcome && (
                   <p class='text-sm border-l-2 border-white/40 pl-4'>
                     <span class='block text-xs uppercase tracking-wide text-gray-400'>
                       {t.projects.outcomeLabel}
                     </span>
-                    {product.copy.outcome}
+                    {product.outcome}
                   </p>
                 )}
                 <div class='flex flex-wrap items-center gap-x-6 gap-y-3 mt-2'>
                   <a
-                    href={product.href}
+                    href={product.caseHref}
                     class='inline-flex items-center gap-2 text-sm font-medium underline-offset-4 hover:underline'
                   >
                     {t.projects.readCase}
@@ -259,10 +229,10 @@ const externalLinkClass =
               data-aos='fade-up'
               data-aos-delay={delays[index % delays.length]}
             >
-              {site.cover && (
+              {site.image && (
                 <Image
-                  src={site.cover}
-                  alt={site.copy.imageAlt}
+                  src={site.image}
+                  alt={site.imageAlt}
                   widths={[400, 640]}
                   sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
                   class='w-full h-48 object-cover object-top border-b border-white/15'
@@ -272,7 +242,7 @@ const externalLinkClass =
               <div class='flex flex-col gap-2 p-6 flex-grow'>
                 <h4 class='text-lg font-semibold'>{site.name}</h4>
                 <p class='text-sm text-gray-400 flex-grow'>
-                  {site.copy.description}
+                  {site.description}
                 </p>
                 <a
                   href={site.url}

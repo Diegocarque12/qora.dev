@@ -7,8 +7,8 @@ const t = useTranslations(lang);
 
 /** Copy comes from the dictionary; assets and targets stay language-neutral. */
 const serviceAssets = [
-  { img: "/web-solutions.svg", link: "/marketing-websites" },
-  { img: "/digital-marketing.svg", link: "/web-applications" },
+  { img: "/web-solutions.svg", link: localizePath("/marketing-websites", lang) },
+  { img: "/digital-marketing.svg", link: localizePath("/web-applications", lang) },
 ];
 
 const services = t.services.items.map((item, index) => ({

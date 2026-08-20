@@ -2,16 +2,16 @@
 import Footer from "@/components/Footer.astro";
 import ServicePage from "@/components/ServicePage/index.astro";
 import Layout from "@/layouts/Layout.astro";
-import { clientSites } from "@/config/portfolio";
+import { ownProducts } from "@/config/portfolio";
 import { ui } from "@/i18n/ui";
 
-const copy = ui.es.marketingWebsites;
+const copy = ui.en.webApplications;
 
 /** Feature images and outbound links are the same in every language. */
 const featureImages = [
-  "/marketing-webs/figma-design.webp",
-  "/marketing-webs/performance.webp",
-  "/marketing-webs/copywriting.webp",
+  "/web-development/responsive.webp",
+  "/web-development/security.webp",
+  "/web-development/supabase.webp",
 ];
 ---
 
@@ -19,7 +19,7 @@ const featureImages = [
   <ServicePage
     copy={copy}
     featureImages={featureImages}
-    projects={clientSites(ui.es)}
+    projects={ownProducts(ui.en, "en")}
   />
   <Footer />
 </Layout>

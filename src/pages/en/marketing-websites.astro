@@ -5,7 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 import { clientSites } from "@/config/portfolio";
 import { ui } from "@/i18n/ui";
 
-const copy = ui.es.marketingWebsites;
+const copy = ui.en.marketingWebsites;
 
 /** Feature images and outbound links are the same in every language. */
 const featureImages = [
@@ -19,7 +19,7 @@ const featureImages = [
   <ServicePage
     copy={copy}
     featureImages={featureImages}
-    projects={clientSites(ui.es)}
+    projects={clientSites(ui.en)}
   />
   <Footer />
 </Layout>
