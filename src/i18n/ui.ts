@@ -1,3 +1,5 @@
+import type { CaseStudyId } from "@/config/caseStudies";
+
 export const languages = {
   es: "Español",
   en: "English",
@@ -7,7 +9,7 @@ export type Lang = keyof typeof languages;
 
 export const defaultLang: Lang = "es";
 
-interface Dictionary {
+export interface Dictionary {
   meta: {
     defaultTitle: string;
     description: string;
@@ -41,6 +43,23 @@ interface Dictionary {
       readonly description: string;
     }[];
     cardLink: string;
+  };
+  projects: {
+    eyebrow: string;
+    heading: string;
+    intro: string;
+    viewAll: string;
+    outcomeLabel: string;
+    cases: Record<
+      CaseStudyId,
+      {
+        readonly tag: string;
+        readonly whatItIs: string;
+        readonly forWhom: string;
+        readonly outcome?: string;
+        readonly cta: string;
+      }
+    >;
   };
   contact: {
     heading: string;
@@ -125,6 +144,34 @@ export const ui = {
       ],
       cardLink: "Ver",
     },
+    projects: {
+      eyebrow: "Portafolio",
+      heading: "Productos que construimos y mantenemos.",
+      intro:
+        "No son maquetas ni conceptos: son plataformas en producción, con clientes reales usándolas todos los días.",
+      viewAll: "Ver más",
+      outcomeLabel: "Resultado",
+      cases: {
+        primefit: {
+          tag: "SaaS · Gimnasios y coaches",
+          whatItIs:
+            "Plataforma de gestión para gimnasios y entrenadores: rutinas, seguimiento de clientes y cobros en un solo lugar.",
+          forWhom:
+            "Para coaches y gimnasios de habla hispana que quieren retener clientes con datos, no con intuición.",
+          outcome:
+            "150% de crecimiento en suscripciones mensuales desde su lanzamiento.",
+          cta: "Ver primefit.coach",
+        },
+        dask: {
+          tag: "SaaS · Academias de baile",
+          whatItIs:
+            "Software de gestión para academias de baile: grupos, asistencia, mensualidades y comunicación con estudiantes, con total claridad.",
+          forWhom:
+            "Para academias que hoy llevan la operación en hojas de cálculo y chats, y necesitan orden sin complicarse.",
+          cta: "Ver getdask.com",
+        },
+      },
+    },
     contact: {
       heading: "Hablemos de tu proyecto",
       name: "Nombre",
@@ -202,6 +249,33 @@ export const ui = {
         },
       ],
       cardLink: "Go to",
+    },
+    projects: {
+      eyebrow: "Portfolio",
+      heading: "Products we build and run.",
+      intro:
+        "Not mockups or concepts: these are platforms in production, with real customers using them every day.",
+      viewAll: "See more",
+      outcomeLabel: "Outcome",
+      cases: {
+        primefit: {
+          tag: "SaaS · Gyms & coaches",
+          whatItIs:
+            "A management platform for gyms and independent coaches: training plans, client tracking, and billing in one place.",
+          forWhom:
+            "Built for Spanish-speaking coaches and gyms that want to retain clients with data, not guesswork.",
+          outcome: "150% growth in monthly subscriptions since launch.",
+          cta: "Visit primefit.coach",
+        },
+        dask: {
+          tag: "SaaS · Dance academies",
+          whatItIs:
+            "Management software for dance academies: groups, attendance, monthly billing, and student communication, with total clarity.",
+          forWhom:
+            "For academies running their operations on spreadsheets and chat threads, who need order without overhead.",
+          cta: "Visit getdask.com",
+        },
+      },
     },
     contact: {
       heading: "Tell us about your project",

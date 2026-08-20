@@ -1,4 +1,4 @@
-import { defaultLang, ui, type Lang } from "@/i18n/ui";
+import { defaultLang, ui, type Dictionary, type Lang } from "@/i18n/ui";
 
 const EN_PREFIX = "/en";
 
@@ -14,7 +14,11 @@ export function getLang(currentLocale: string | undefined): Lang {
   return isLang(currentLocale) ? currentLocale : defaultLang;
 }
 
-export function useTranslations(lang: Lang) {
+/**
+ * Returns the dictionary widened to the Dictionary interface: consumers get
+ * `string` and the optional keys, not the narrow literals `as const` infers.
+ */
+export function useTranslations(lang: Lang): Dictionary {
   return ui[lang];
 }
 

@@ -1,23 +1,10 @@
 ---
-const projects = [
-  {
-    id: "branding",
-    src: "/projects/agromig.webp",
-    alt: "Innovative Branding",
-  },
-  { id: "figma", src: "/projects/figma.webp", alt: "Figma Design" },
-  {
-    id: "content",
-    src: "/projects/content.webp",
-    alt: "Content Project",
-  },
-  {
-    id: "redesign",
-    src: "/projects/redesign.webp",
-    alt: "Redesign Project",
-  },
-  { id: "saas", src: "/projects/saas.webp", alt: "SaaS Development" },
-];
+import ExternalLink from "@/assets/icons/ExternalLink.astro";
+import { caseStudies } from "@/config/caseStudies";
+import { getLang, localizePath, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
 <div
@@ -33,6 +20,7 @@ const projects = [
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       class="max-w-[500px]"
+      aria-hidden="true"
     >
       <path
         opacity="0.1"
@@ -48,6 +36,7 @@ const projects = [
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       class="max-w-[266px]"
+      aria-hidden="true"
     >
       <path
         opacity="0.1"
@@ -55,233 +44,86 @@ const projects = [
         stroke="white"></path>
     </svg>
   </div>
+
   <div
     class="flex flex-col items-start justify-center mb-4 gap-4 px-4 sm:px-6 lg:px-32 w-full lg:w-1/2"
   >
     <span
-      class="hidden text-muted text-sm font-medium text-white lg:flex gap-2"
+      class="hidden text-muted text-sm font-medium text-white lg:flex gap-2 items-center"
     >
-      <svg width="40" height="20" xmlns="http://www.w3.org/2000/svg">
+      <svg width="40" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="0" y1="10" x2="30" y2="10" stroke="white" stroke-width="1"
         ></line>
         <circle cx="35" cy="10" r="4" fill="" stroke="white"></circle>
       </svg>
-      Portfolio</span
+      {t.projects.eyebrow}</span
     >
     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
-      Showcasing Creative Excellence.
+      {t.projects.heading}
     </h2>
     <p class="text-muted-foreground mb-8 text-gray-300 text-sm lg:mr-28">
-      Crafting visually appealing and user websites tailored to your brand's and
-      observe of objectives.
+      {t.projects.intro}
     </p>
-    <ul class="space-y-2 mb-8 w-full flex flex-col gap-4">
-      <li
-        data-project="branding"
-        class="text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer"
-      >
-        Innovative Branding
-        <svg
-          width="20%"
-          height="2"
-          xmlns="http://www.w3.org/2000/svg"
-          class="hidden sm:block"
-        >
-          <line
-            x1="0"
-            y1="1"
-            x2="100%"
-            y2="1"
-            stroke="gray"
-            stroke-width="2"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-white"
-          ></line>
-        </svg>
-      </li>
-      <li
-        data-project="figma"
-        class="text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer"
-      >
-        Figma Design
-        <svg
-          width="20%"
-          height="2"
-          xmlns="http://www.w3.org/2000/svg"
-          class="hidden sm:block"
-        >
-          <line
-            x1="0"
-            y1="1"
-            x2="100%"
-            y2="1"
-            stroke="gray"
-            stroke-width="2"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-white"
-          ></line>
-        </svg>
-      </li>
-      <li
-        data-project="content"
-        class="text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer"
-      >
-        SEO And Content Marketing
-        <svg
-          width="20%"
-          height="2"
-          xmlns="http://www.w3.org/2000/svg"
-          class="hidden sm:block"
-        >
-          <line
-            x1="0"
-            y1="1"
-            x2="100%"
-            y2="1"
-            stroke="gray"
-            stroke-width="2"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-white"
-          ></line>
-        </svg>
-      </li>
-      <li
-        data-project="redesign"
-        class="text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer"
-      >
-        Creative Website Redesign
-        <svg
-          width="20%"
-          height="2"
-          xmlns="http://www.w3.org/2000/svg"
-          class="hidden sm:block"
-        >
-          <line
-            x1="0"
-            y1="1"
-            x2="100%"
-            y2="1"
-            stroke="gray"
-            stroke-width="2"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-white"
-          ></line>
-        </svg>
-      </li>
-      <li
-        data-project="saas"
-        class="text-base sm:text-lg md:text-xl lg:text-2xl hover:text-white hover:scale-110 transition-all duration-300 ease-in-out flex items-center gap-2 justify-between text-transparent font-bold [-webkit-text-stroke:0.5px_grey] group cursor-pointer"
-      >
-        SaaS Development & Integration
-        <svg
-          width="20%"
-          height="2"
-          xmlns="http://www.w3.org/2000/svg"
-          class="hidden sm:block"
-        >
-          <line
-            x1="0"
-            y1="1"
-            x2="100%"
-            y2="1"
-            stroke="gray"
-            stroke-width="2"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-white"
-          ></line>
-        </svg>
-      </li>
-    </ul>
-  </div>
-  <div class="mt-8 w-full lg:w-1/2 relative min-h-[400px] sm:min-h-[500px]">
+
     <a
-      href="/all-services"
-      class="bg-secondary text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary rounded-full px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300 transform hover:scale-105 text-white absolute top-0 right-4 sm:right-20 flex items-center justify-center w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] border border-current flex-col group"
-      style="border-radius: 100%;"
+      href={localizePath("/all-services", lang)}
+      class="inline-flex items-center gap-2 text-white border border-white/40 rounded-full px-6 py-3 text-sm transition-colors duration-300 hover:bg-white hover:text-black"
     >
-      <span
-        class="transition-colors duration-300 group-hover:text-black z-10 text-sm sm:text-base mb-8 sm:mb-0"
-        >View All</span
-      >
+      {t.projects.viewAll}
       <svg
         width="40"
         height="8"
         viewBox="0 0 50 10"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="transition-all duration-300 group-hover:text-black z-10 sm:w-[50px] sm:h-[10px]"
+        aria-hidden="true"
       >
         <path d="M0.231934 1L48.0951 1L36.0525 9" stroke="currentColor"></path>
       </svg>
-      <div
-        class="absolute inset-0 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      >
-      </div>
     </a>
-    <div
-      class="bg-muted rounded-lg shadow-lg hover:shadow-xl transition-shadow absolute right-0 bottom-12"
-    >
-      {
-        projects.map(({ id, src, alt }) => (
-          <img
-            src={src}
-            alt={alt}
-            id={`${id}-image`}
-            class="w-3/4 h-3/4 object-cover rounded-lg hidden"
-            loading="lazy"
-            decoding="async"
-            width="400"
-            height="500"
-            fetchpriority="low"
-          />
-        ))
-      }
-    </div>
+  </div>
+
+  <div
+    class="mt-8 w-full lg:w-1/2 flex flex-col gap-6 px-4 sm:px-6 lg:px-0 lg:pr-16"
+  >
+    {
+      caseStudies.map((project) => {
+        const copy = t.projects.cases[project.id];
+        return (
+          <article class="border border-white/15 p-6 sm:p-8 flex flex-col gap-4 transition-colors duration-300 hover:border-white/40">
+            <div class="flex flex-col gap-1">
+              <span class="text-xs uppercase tracking-wide text-gray-400">
+                {copy.tag}
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white">
+                {project.name}
+              </h3>
+            </div>
+
+            <p class="text-sm text-gray-300">{copy.whatItIs}</p>
+            <p class="text-sm text-gray-400">{copy.forWhom}</p>
+
+            {copy.outcome && (
+              <p class="text-sm text-white border-l-2 border-white/40 pl-4">
+                <span class="block text-xs uppercase tracking-wide text-gray-400">
+                  {t.projects.outcomeLabel}
+                </span>
+                {copy.outcome}
+              </p>
+            )}
+
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-white text-sm font-medium underline-offset-4 hover:underline mt-2"
+            >
+              {copy.cta}
+              <ExternalLink />
+            </a>
+          </article>
+        );
+      })
+    }
   </div>
 </div>
-<script>
-  const listItems = document.querySelectorAll<HTMLElement>("li[data-project]");
-  const images = document.querySelectorAll(".bg-muted img");
-  let isFirstInteraction = true;
-  let lastActiveProject: string | null = null;
-
-  // Show first project by default only on initial load
-  const firstProject = listItems[0];
-  if (firstProject?.dataset.project) {
-    showImage(firstProject.dataset.project);
-    firstProject.classList.add("text-white", "scale-110");
-  }
-
-  function showImage(projectType: string) {
-    images.forEach((img) => img.classList.add("hidden"));
-    listItems.forEach((item) => {
-      item.classList.remove("text-white", "scale-110");
-    });
-    const targetImage = document.getElementById(`${projectType}-image`);
-    if (targetImage) {
-      targetImage.classList.remove("hidden");
-
-      const activeItem = document.querySelector(
-        `li[data-project="${projectType}"]`
-      );
-      activeItem?.classList.add("text-white", "scale-110");
-
-      if (!isFirstInteraction) {
-        lastActiveProject = projectType;
-      }
-    }
-  }
-
-  listItems.forEach((item) => {
-    item.addEventListener("mouseenter", () => {
-      isFirstInteraction = false;
-      if (item.dataset.project) {
-        showImage(item.dataset.project);
-      }
-    });
-  });
-
-  const ulElement = document.querySelector("ul");
-  if (ulElement) {
-    ulElement.addEventListener("mouseleave", () => {
-      if (lastActiveProject) {
-        showImage(lastActiveProject);
-      }
-    });
-  }
-</script>
