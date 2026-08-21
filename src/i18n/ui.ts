@@ -220,11 +220,11 @@ export const ui = {
       closeMenu: "Cerrar el menú",
     },
     hero: {
-      lead: "Agencia",
-      display: "Digital",
-      accent: "Creativa",
+      lead: "Sitios web y",
+      display: "Software",
+      accent: "a medida",
       paragraph:
-        "En Qora diseñamos y desarrollamos productos digitales de principio a fin: sitios web que convierten y plataformas SaaS que resuelven la operación diaria de tu negocio.",
+        "Diseñamos y construimos sitios web y plataformas que resuelven la operación diaria de tu negocio. Trabajas directo con quien escribe el código: sin intermediarios.",
       button: "Ver proyectos",
       pills: [
         "Diseño UI/UX",
@@ -276,6 +276,7 @@ export const ui = {
             "Software de gestión para academias de baile: grupos, asistencia, mensualidades y comunicación con estudiantes, con total claridad.",
           forWhom:
             "Para academias que hoy llevan la operación en hojas de cálculo y chats, y necesitan orden sin complicarse.",
+          outcome: "3 academias activas y más de 150 estudiantes gestionados.",
           cta: "Ver getdask.com",
         },
       },
@@ -624,11 +625,11 @@ export const ui = {
       closeMenu: "Close menu",
     },
     hero: {
-      lead: "Creative",
-      display: "Digital",
-      accent: "Agency",
+      lead: "Custom",
+      display: "Websites",
+      accent: "& Software",
       paragraph:
-        "At Qora we design and build digital products end to end: websites that convert and SaaS platforms that take the daily grind out of running your business.",
+        "We design and build websites and platforms that take the daily grind out of running your business. You work directly with the person writing the code: no middlemen.",
       button: "See our work",
       pills: ["UI/UX Design", "Search Engine Optimization (SEO)", "Development"],
     },
@@ -675,6 +676,7 @@ export const ui = {
             "Management software for dance academies: groups, attendance, monthly billing, and student communication, with total clarity.",
           forWhom:
             "For academies running their operations on spreadsheets and chat threads, who need order without overhead.",
+          outcome: "3 active academies and over 150 students managed.",
           cta: "Visit getdask.com",
         },
       },
