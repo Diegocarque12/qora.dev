@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://qora.dev/sitemap-index.xml

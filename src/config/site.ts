@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Qora",
-  url: "https://qora.dev",
+  url: "https://www.qora.dev",
   author: "Diego Carvajal",
   foundingYear: 2023,
   social: {
